@@ -10,9 +10,9 @@ const TopicList = ({ topics, votes, handleUpVote, handleDownVote }) => {
 
         return (
             <li key={index}>
-                <a href='#' onClick={() => handleUpVote(topicId)}>Upvote</a>
-                - {getVotes} -
-                <a href='#' onClick={() => handleDownVote(topicId)}>Downvote</a>
+                <span onClick={() => handleUpVote(topicId)}>Upvote</span>
+                <span> ({getVotes}) </span>
+                <span onClick={() => handleDownVote(topicId)}>Downvote</span>
                 <div>{topic.username}: {topic.topic}</div>
                 <div>{topic.creation_date}</div>
             </li>)

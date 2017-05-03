@@ -1,44 +1,69 @@
 import React, { Component } from 'react';
 import Title from './Title';
 import UserProfile from './UserProfile';
-import TopicInput from './TopicInput';
+import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
+
+const title = 'REACT REDDIT';
+const username = 'squanch';
+
+function createVote(topicId, upOrDownVote, username) {
+    const vote = {
+        topic_id: topicId,
+        username: username,
+        up_or_down: upOrDownVote,
+        timestamp: Date.now() // TODO fix this
+    }
+    return vote;
+}
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: 'REACT REDDIT',
-            username: 'mrsquanch',
+            title,
+            username,
             topics: props.jsonObj.topics,
-            votes: props.jsonObj.votes
+            votes: props.jsonObj.votes,
+            newTopic: ''
         }
     }
 
     handleUpVote = (topicId) => {
-        const vote = this.createVote(topicId, 1);
-        this.addVoteToVotesCollectionAndState(vote);
+        const vote = createVote(topicId, 1, username);
+        this.setState({ votes: this.state.votes.concat([vote]) });
     }
 
     handleDownVote = (topicId) => {
-        const vote = this.createVote(topicId, -1);
-        this.addVoteToVotesCollectionAndState(vote);
+        const vote = createVote(topicId, -1, username);
+        this.setState({ votes: this.state.votes.concat([vote]) });
     }
 
-    createVote(topicId, upOrDownVote) {
-        const vote = {
-            topic_id: topicId,
-            username: this.state.username,
-            up_or_down: upOrDownVote,
-            timestamp: Date.now
-        }
-        return vote;
+    handleChange = (event) => {
+        this.setState({ newTopic: event.target.value });
     }
 
-    addVoteToVotesCollectionAndState(vote) {
-        const votes = this.state.votes;
-        votes.push(vote);
-        this.setState({votes: votes});
+    getNewTopicId = () => {
+        const { topics } = this.state;
+        const maxTopicId = topics.map(topic => topic.topic_id)
+            .reduce((max, current) => Math.max(max, current));
+        const newTopicId = maxTopicId + 1;
+        return newTopicId;
+    }
+
+    handleSubmit = (event) => {
+        const { topics, newTopic } = this.state;
+        const topic = {
+            topic_id: this.getNewTopicId(),
+            username,
+            topic: newTopic,
+            creation_date: Date.now()
+        };
+        this.setState({
+            topics: topics.concat([topic]),
+            newTopic: ''
+        });
+        event.preventDefault();
     }
 
     render() {
@@ -46,10 +71,12 @@ class App extends Component {
             <div className='home'>
                 <header>
                     <Title text={this.state.title} />
-                    <UserProfile username={this.state.username} />
+                    <UserProfile username={username} />
                 </header>
                 <main>
-                    <TopicInput />
+                    <SubmitTopicForm newTopic={this.state.newTopic}
+                        handleChange={this.handleChange}
+                        handleSubmit={this.handleSubmit} />
                     <TopicList topics={this.state.topics}
                         votes={this.state.votes}
                         handleUpVote={this.handleUpVote}

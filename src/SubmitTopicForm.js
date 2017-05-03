@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const SubmitTopicForm = ({ newTopic, handleSubmit, handleChange }) => (
     <form onSubmit={handleSubmit}>

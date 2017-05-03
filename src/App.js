@@ -24,19 +24,15 @@ class App extends Component {
             title,
             username,
             topics: props.jsonObj.topics,
-            votes: props.jsonObj.votes,
             newTopic: ''
         }
     }
 
-    handleUpVote = (topicId) => {
-        const vote = createVote(topicId, 1, username);
-        this.setState({ votes: this.state.votes.concat([vote]) });
-    }
-
-    handleDownVote = (topicId) => {
-        const vote = createVote(topicId, -1, username);
-        this.setState({ votes: this.state.votes.concat([vote]) });
+    handleVote = (topicId, upOrDownVote) => {
+        const vote = createVote(topicId, upOrDownVote, username);
+        const topic = this.state.topics.find(topic => topic.topic_id === topicId);
+        topic.votes = topic.votes.concat([vote]);
+        this.setState({ topics: this.state.topics });
     }
 
     handleChange = (event) => {
@@ -78,9 +74,7 @@ class App extends Component {
                         handleChange={this.handleChange}
                         handleSubmit={this.handleSubmit} />
                     <TopicList topics={this.state.topics}
-                        votes={this.state.votes}
-                        handleUpVote={this.handleUpVote}
-                        handleDownVote={this.handleDownVote} />
+                        handleVote={this.handleVote} />
                 </main>
             </div>
         );

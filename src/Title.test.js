@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Title from '../components/Title';
+import Title from './Title';
 
 test('Title renders the text property', () => {
     const title = shallow(

@@ -13,14 +13,14 @@ function getVotes(topic) {
 const TopicList = ({ topics, handleVote }) => {
     const sortedTopics = [...topics].sort(compareTopicVotes);
     const top20Topics = sortedTopics.slice(0, 20);
-    const getTopicItems = top20Topics.map(topic =>
-        <TopicItem topic={topic} handleVote={handleVote} />);
+    const renderTopicItems = top20Topics.map(topic =>
+        <TopicItem key={topic.topic_id} topic={topic} handleVote={handleVote} />);
 
     return (
         <section>
             <h2><i>Topics</i></h2>
             <ul className="topicList">
-                {getTopicItems}
+                {renderTopicItems}
             </ul>
         </section>
     );

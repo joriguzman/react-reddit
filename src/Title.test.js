@@ -1,11 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, render } from 'enzyme';
 import Title from './Title';
 
-test('Title renders the text property', () => {
-    const title = shallow(
-        <Title text='FRONT PAGE' />
-    );
+describe('Title', () => {
+    it('Should render without thowring an error', () => {
+        const title = shallow(<Title text='TITLE' />);
 
-    expect(title.text()).toEqual('FRONT PAGE');
+        expect(title.contains(<div><h1>TITLE</h1></div>)).toBe(true);
+    });
+
+    it('Should render text property', () => {
+        const title = render(<Title text='TITLE' />);
+
+        expect(title.text()).toEqual('TITLE');
+    });
 });

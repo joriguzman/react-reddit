@@ -8,7 +8,7 @@ function getVotes(topic) {
 const TopicItem = ({ topic, handleVote }) => {
     const topicId = topic.topic_id;
     return (
-        <li key={topicId}>
+        <li>
             <span onClick={() => handleVote(topicId, 1)}>Upvote</span>
             <span> ({getVotes(topic)}) </span>
             <span onClick={() => handleVote(topicId, -1)}>Downvote</span>

@@ -12,6 +12,6 @@ describe('Title', () => {
     it('renders text property', () => {
         const title = shallow(<Title text='TITLE' />);
 
-        expect(title.text()).toEqual('TITLE');
+        expect(title.text()).toBe('TITLE');
     });
 });

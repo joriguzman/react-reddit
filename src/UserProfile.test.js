@@ -12,6 +12,6 @@ describe('UserProfile', () => {
     it('renders username property', () => {
         const userProfile = shallow(<UserProfile username='morty' />);
 
-        expect(userProfile.text()).toEqual('Hi morty!');
+        expect(userProfile.text()).toBe('Hi morty!');
     });
 });

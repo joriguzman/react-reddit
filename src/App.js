@@ -17,6 +17,17 @@ function createVote(topicId, upOrDownVote, username) {
     return vote;
 }
 
+function getNewTopicId(topics) {
+    const maxTopicId = topics.map(topic => topic.topic_id)
+        .reduce((max, current) => Math.max(max, current));
+    const newTopicId = maxTopicId + 1;
+    return newTopicId;
+}
+
+function findTopic(topics, topicId) {
+    return topics.find(topic => topic.topic_id === topicId);
+}
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +41,7 @@ class App extends Component {
 
     handleVote = (topicId, upOrDownVote) => {
         const vote = createVote(topicId, upOrDownVote, username);
-        const topic = this.state.topics.find(topic => topic.topic_id === topicId);
+        const topic = findTopic(this.state.topics, topicId);
         topic.votes = topic.votes.concat([vote]);
         this.setState({ topics: this.state.topics });
     }
@@ -39,17 +50,9 @@ class App extends Component {
         this.setState({ newTopic: event.target.value });
     }
 
-    getNewTopicId = () => {
-        const { topics } = this.state;
-        const maxTopicId = topics.map(topic => topic.topic_id)
-            .reduce((max, current) => Math.max(max, current));
-        const newTopicId = maxTopicId + 1;
-        return newTopicId;
-    }
-
     handleSubmit = (event) => {
         const { topics, newTopic } = this.state;
-        const topicId = this.getNewTopicId();
+        const topicId = getNewTopicId(topics);
         const votes = [];
         votes.push(createVote(topicId, 1, username));
 

@@ -21,4 +21,30 @@ describe('TopicItem', () => {
         expect(topicItem.find('span').length).toBe(3);
         expect(topicItem.find('div').length).toBe(2);
     });
+
+    it('renders topic property', () => {
+        const topic = {
+            topic_id: 1,
+            username: 'mrmeeseks',
+            topic: "Sample topic",
+            creation_date: '2016-10-25T11:08:25Z',
+            votes: [{
+                "username": "gskellorne0",
+                "up_or_down": 1,
+                "timestamp": "2017-01-21T01:35:27Z"
+            }]
+        };
+        const topicItem = shallow(<TopicItem topic={topic} />);
+
+        expect(topicItem.find('.votes').text()).toContain('(1)');
+        expect(topicItem.find('.topic').text()).toContain('mrmeeseks: Sample topic');
+    });
+
+    it('increases votes when upvote is clicked', () => {
+        expect().toFail();
+    });
+
+    it('increases votes when upvote is clicked', () => {
+        expect().toFail();
+    });
 });

@@ -9,10 +9,10 @@ const TopicItem = ({ topic, handleVote }) => {
     const topicId = topic.topic_id;
     return (
         <li>
-            <span onClick={() => handleVote(topicId, 1)}>Upvote</span>
-            <span> ({getVotes(topic)}) </span>
-            <span onClick={() => handleVote(topicId, -1)}>Downvote</span>
-            <div>{topic.username}: {topic.topic}</div>
+            <span className='upvote' onClick={() => handleVote(topicId, 1)}>Upvote</span>
+            <span className='votes'> ({getVotes(topic)}) </span>
+            <span className='downvote' onClick={() => handleVote(topicId, -1)}>Downvote</span>
+            <div className='topic'>{topic.username}: {topic.topic}</div>
             <div>{topic.creation_date}</div>
         </li>
     );

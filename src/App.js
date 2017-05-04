@@ -12,7 +12,7 @@ function createVote(topicId, upOrDownVote, username) {
         topic_id: topicId,
         username: username,
         up_or_down: upOrDownVote,
-        timestamp: Date.now() // TODO fix this
+        timestamp: new Date().toLocaleString() // TODO fix this
     }
     return vote;
 }
@@ -35,7 +35,7 @@ class App extends Component {
         this.setState({ topics: this.state.topics });
     }
 
-    handleChange = (event) => {
+    handleTopicInputChange = (event) => {
         this.setState({ newTopic: event.target.value });
     }
 
@@ -49,12 +49,18 @@ class App extends Component {
 
     handleSubmit = (event) => {
         const { topics, newTopic } = this.state;
+        const topicId = this.getNewTopicId();
+        const votes = [];
+        votes.push(createVote(topicId, 1, username));
+
         const topic = {
-            topic_id: this.getNewTopicId(),
-            username,
+            topic_id: topicId,
+            username: username,
             topic: newTopic,
-            creation_date: Date.now()
+            creation_date: new Date().toLocaleString(),
+            votes: votes
         };
+
         this.setState({
             topics: topics.concat([topic]),
             newTopic: ''
@@ -71,7 +77,7 @@ class App extends Component {
                 </header>
                 <main>
                     <SubmitTopicForm newTopic={this.state.newTopic}
-                        handleChange={this.handleChange}
+                        handleTopicInputChange={this.handleTopicInputChange}
                         handleSubmit={this.handleSubmit} />
                     <TopicList topics={this.state.topics}
                         handleVote={this.handleVote} />

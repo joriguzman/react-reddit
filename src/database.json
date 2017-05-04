@@ -3,7 +3,7 @@
         {
             "topic_id": 1,
             "username": "gskellorne0",
-            "topic": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+            "topic": "Netflix Has Almost 4x as Many Streaming Subscribers as Comcast has Cable Subscribers",
             "creation_date": "2016-10-25T11:08:25Z",
             "votes": [
                 {
@@ -41,7 +41,7 @@
         {
             "topic_id": 2,
             "username": "qtingcomb1",
-            "topic": "Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+            "topic": "Google Docs users hit with sophisticated phishing attack",
             "creation_date": "2016-09-05T13:26:51Z",
             "votes": [
                 {
@@ -53,16 +53,6 @@
                     "username": "mlagadu7",
                     "up_or_down": 1,
                     "timestamp": "2016-12-30T03:17:21Z"
-                },
-                {
-                    "username": "kchimenti8",
-                    "up_or_down": 1,
-                    "timestamp": "2017-01-19T08:52:16Z"
-                },
-                {
-                    "username": "ccoad9",
-                    "up_or_down": 1,
-                    "timestamp": "2017-04-23T07:15:00Z"
                 },
                 {
                     "username": "bovershotta",
@@ -83,28 +73,13 @@
                     "username": "alippittd",
                     "up_or_down": 1,
                     "timestamp": "2016-10-21T20:20:40Z"
-                },
-                {
-                    "username": "aforkere",
-                    "up_or_down": 1,
-                    "timestamp": "2016-10-27T06:56:18Z"
-                },
-                {
-                    "username": "mrockcliffef",
-                    "up_or_down": 1,
-                    "timestamp": "2016-12-02T14:03:38Z"
-                },
-                {
-                    "username": "hcamiesg",
-                    "up_or_down": 1,
-                    "timestamp": "2016-05-26T14:24:56Z"
                 }
             ]
         },
         {
             "topic_id": 3,
             "username": "goverland2",
-            "topic": "Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+            "topic": "Why Netflix Is Winning the Online Piracy Wars",
             "creation_date": "2017-03-04T03:14:46Z",
             "votes": [
                 {
@@ -123,34 +98,9 @@
                     "timestamp": "2016-08-24T13:54:32Z"
                 },
                 {
-                    "username": "ndarnbrookk",
-                    "up_or_down": -1,
-                    "timestamp": "2017-04-05T00:15:19Z"
-                },
-                {
-                    "username": "rambroisl",
-                    "up_or_down": -1,
-                    "timestamp": "2016-06-12T12:08:35Z"
-                },
-                {
                     "username": "mkingshottm",
                     "up_or_down": 1,
                     "timestamp": "2016-08-05T14:51:38Z"
-                },
-                {
-                    "username": "clonghin",
-                    "up_or_down": -1,
-                    "timestamp": "2016-06-04T19:58:50Z"
-                },
-                {
-                    "username": "lcornecko",
-                    "up_or_down": -1,
-                    "timestamp": "2016-06-24T20:30:16Z"
-                },
-                {
-                    "username": "bazemap",
-                    "up_or_down": -1,
-                    "timestamp": "2017-02-04T17:13:53Z"
                 },
                 {
                     "username": "jmcneillyq",
@@ -169,7 +119,7 @@
                 },
                 {
                     "username": "mpattiet",
-                    "up_or_down": -1,
+                    "up_or_down": 1,
                     "timestamp": "2017-04-21T22:11:43Z"
                 }
             ]
@@ -177,63 +127,63 @@
         {
             "topic_id": 4,
             "username": "rhenrionot3",
-            "topic": "Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.",
+            "topic": "Global WhatsApp Outage",
             "creation_date": "2016-09-22T02:25:29Z",
             "votes": []
         },
         {
             "topic_id": 5,
             "username": "hmacilhench4",
-            "topic": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+            "topic": "Why isn't Net Neutrality a bigger deal right now?",
             "creation_date": "2016-10-07T15:03:54Z",
             "votes": []
         },
         {
             "topic_id": 6,
             "username": "ddommerque5",
-            "topic": "Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",
+            "topic": "Windows 10 S won't let you change the default browser or switch to Google search",
             "creation_date": "2017-01-10T16:57:13Z",
             "votes": []
         },
         {
             "topic_id": 7,
             "username": "agundry6",
-            "topic": "Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl.",
+            "topic": "Don't Get Fooled: The Plan Is To Kill Net Neutrality While Pretending It's Being Protected",
             "creation_date": "2016-10-06T05:34:25Z",
             "votes": []
         },
         {
             "topic_id": 8,
             "username": "fexcell7",
-            "topic": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+            "topic": "SpaceX to launch broadband satellites in 2019 - Satellites will function like a mesh network and deliver gigabit speeds",
             "creation_date": "2017-04-17T09:01:30Z",
             "votes": []
         },
         {
             "topic_id": 9,
             "username": "hraoult8",
-            "topic": "Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
+            "topic": "Dem: GOP's net neutrality rollback aims to 'choke off' free speech",
             "creation_date": "2017-04-20T11:39:01Z",
             "votes": []
         },
         {
             "topic_id": 10,
             "username": "mmuffin9",
-            "topic": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst.",
+            "topic": "IBM is urging customers to destroy V3500, V3700 and V5000 flash drives it shipped because they contain malware.",
             "creation_date": "2016-05-15T00:41:03Z",
             "votes": []
         },
         {
             "topic_id": 11,
             "username": "rplumridegea",
-            "topic": "Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+            "topic": "The Parts of America Most Susceptible to Automation - \"65 percent of jobs in Las Vegas and 63 percent of jobs in Riverside predicted to be automatable by 2025.\"",
             "creation_date": "2016-11-20T13:53:33Z",
             "votes": []
         },
         {
             "topic_id": 12,
             "username": "chamonb",
-            "topic": "Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy.",
+            "topic": "NSA still collecting Americans’ phone call data",
             "creation_date": "2016-06-10T02:48:29Z",
             "votes": []
         },

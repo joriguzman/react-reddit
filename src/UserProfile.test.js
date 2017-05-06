@@ -3,7 +3,7 @@ import { shallow, render } from 'enzyme';
 import UserProfile from './UserProfile';
 
 describe('UserProfile', () => {
-    it('renders without throwing an error', () => {
+    it('renders correct elements', () => {
         const userProfile = shallow(<UserProfile username='morty' />);
 
         expect(userProfile.contains(<div>Hi morty!</div>)).toBe(true);

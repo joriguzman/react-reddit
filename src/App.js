@@ -46,7 +46,7 @@ class App extends Component {
         this.setState({ topics: this.state.topics });
     }
 
-    handleTopicInputChange = (event) => {
+    handleInputChange = (event) => {
         this.setState({ newTopic: event.target.value });
     }
 
@@ -80,8 +80,8 @@ class App extends Component {
                 </header>
                 <main>
                     <SubmitTopicForm newTopic={this.state.newTopic}
-                        handleTopicInputChange={this.handleTopicInputChange}
-                        handleSubmit={this.handleSubmit} />
+                        onInputChange={this.handleInputChange}
+                        onSubmit={this.handleSubmit} />
                     <TopicList topics={this.state.topics}
                         handleVote={this.handleVote} />
                 </main>

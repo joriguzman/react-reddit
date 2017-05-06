@@ -1,9 +1,9 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import TopicItem from './TopicItem';
 
 describe('TopicItem', () => {
-    it('renders without throwing an error', () => {
+    it('renders correct elements', () => {
         const topic = {
             topic_id: 1,
             username: 'mrmeeseks',

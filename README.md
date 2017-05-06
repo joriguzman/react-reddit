@@ -4,6 +4,7 @@ Reddit clone using React.
 ### TODO
 - Tests
 - Make code functional
+- Add prop types
 - Styling
 - Deploy to Heroku / Docker
 

@@ -11,15 +11,16 @@ describe('TopicItem', () => {
             creation_date: '2016-10-25T11:08:25Z',
             votes: [{
                 "username": "gskellorne0",
-                "up_or_down": 1,
-                "timestamp": "2017-01-21T01:35:27Z"
+                "up_or_down": 1
             }]
         };
         const topicItem = shallow(<TopicItem topic={topic} />);
 
-        expect(topicItem.find('li').length).toBe(1);
-        expect(topicItem.find('span').length).toBe(3);
-        expect(topicItem.find('div').length).toBe(2);
+        expect(topicItem.find('.upvote').length).toBe(1);
+        expect(topicItem.find('.votes').length).toBe(1);
+        expect(topicItem.find('.downvote').length).toBe(1);
+        expect(topicItem.find('.topic').length).toBe(1);
+        expect(topicItem.find('.creationDate').length).toBe(1);
     });
 
     it('renders topic property', () => {
@@ -30,8 +31,7 @@ describe('TopicItem', () => {
             creation_date: '2016-10-25T11:08:25Z',
             votes: [{
                 "username": "gskellorne0",
-                "up_or_down": 1,
-                "timestamp": "2017-01-21T01:35:27Z"
+                "up_or_down": 1
             }]
         };
         const topicItem = shallow(<TopicItem topic={topic} />);
@@ -40,11 +40,40 @@ describe('TopicItem', () => {
         expect(topicItem.find('.topic').text()).toContain('mrmeeseks: Sample topic');
     });
 
-    it('increases votes when upvote is clicked', () => {
-        expect().toFail();
+    it('calls handleVote when upvote is clicked', () => {
+        const handleVote = jest.fn();
+        const topic = {
+            topic_id: 1,
+            username: 'mrmeeseks',
+            topic: "Sample topic",
+            creation_date: '2016-10-25T11:08:25Z',
+            votes: [{
+                "username": "gskellorne0",
+                "up_or_down": 1
+            }]
+        };
+        const topicItem = shallow(<TopicItem topic={topic} handleVote={handleVote} />);
+
+        topicItem.find('.upvote').simulate('click');
+
+        expect(handleVote).toBeCalled();
     });
 
-    it('increases votes when upvote is clicked', () => {
-        expect().toFail();
-    });
-});
+    it('calls handleVote when downvote is clicked', () => {
+        const handleVote = jest.fn();
+        const topic = {
+            topic_id: 1,
+            username: 'mrmeeseks',
+            topic: "Sample topic",
+            creation_date: '2016-10-25T11:08:25Z',
+            votes: [{
+                "username": "gskellorne0",
+                "up_or_down": 1
+            }]
+        };
+        const topicItem = shallow(<TopicItem topic={topic} handleVote={handleVote} />);
+
+        topicItem.find('.downvote').simulate('click');
+
+        expect(handleVote).toBeCalled();
+    });});

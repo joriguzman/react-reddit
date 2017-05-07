@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import SubmitTopicForm from './SubmitTopicForm';
 
 describe('SubmitTopicForm', () => {
@@ -19,13 +19,12 @@ describe('SubmitTopicForm', () => {
         expect(handleInputChange).toBeCalled();
     });
 
-    // TODO get this to work
-    // it('calls handleSubmit when input is changed', () => {
-    //     const handleSubmit = jest.fn();
-    //     const submitForm = shallow(<SubmitTopicForm onSubmit={handleSubmit} />);
+    it('calls handleSubmit when input is changed', () => {
+        const handleSubmit = jest.fn();
+        const submitForm = mount(<SubmitTopicForm onSubmit={handleSubmit} />);
 
-    //     submitForm.find('input').simulate('submit');
+        submitForm.find('input').simulate('submit');
 
-    //     expect(handleSubmit).toBeCalled();
-    // });
+        expect(handleSubmit).toBeCalled();
+    });
 });

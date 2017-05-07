@@ -3,17 +3,18 @@ import { shallow } from 'enzyme';
 import TopicItem from './TopicItem';
 
 describe('TopicItem', () => {
+    const topic = {
+        topic_id: 1,
+        username: 'mrmeeseks',
+        topic: "Sample topic",
+        creation_date: '2016-10-25T11:08:25Z',
+        votes: [{
+            "username": "gskellorne0",
+            "up_or_down": 1
+        }]
+    };
+
     it('renders correct elements', () => {
-        const topic = {
-            topic_id: 1,
-            username: 'mrmeeseks',
-            topic: "Sample topic",
-            creation_date: '2016-10-25T11:08:25Z',
-            votes: [{
-                "username": "gskellorne0",
-                "up_or_down": 1
-            }]
-        };
         const topicItem = shallow(<TopicItem topic={topic} />);
 
         expect(topicItem.find('.upvote').length).toBe(1);
@@ -24,16 +25,6 @@ describe('TopicItem', () => {
     });
 
     it('renders topic property', () => {
-        const topic = {
-            topic_id: 1,
-            username: 'mrmeeseks',
-            topic: "Sample topic",
-            creation_date: '2016-10-25T11:08:25Z',
-            votes: [{
-                "username": "gskellorne0",
-                "up_or_down": 1
-            }]
-        };
         const topicItem = shallow(<TopicItem topic={topic} />);
 
         expect(topicItem.find('.votes').text()).toContain('(1)');
@@ -42,16 +33,6 @@ describe('TopicItem', () => {
 
     it('calls handleVote when upvote is clicked', () => {
         const handleVote = jest.fn();
-        const topic = {
-            topic_id: 1,
-            username: 'mrmeeseks',
-            topic: "Sample topic",
-            creation_date: '2016-10-25T11:08:25Z',
-            votes: [{
-                "username": "gskellorne0",
-                "up_or_down": 1
-            }]
-        };
         const topicItem = shallow(<TopicItem topic={topic} handleVote={handleVote} />);
 
         topicItem.find('.upvote').simulate('click');
@@ -61,19 +42,10 @@ describe('TopicItem', () => {
 
     it('calls handleVote when downvote is clicked', () => {
         const handleVote = jest.fn();
-        const topic = {
-            topic_id: 1,
-            username: 'mrmeeseks',
-            topic: "Sample topic",
-            creation_date: '2016-10-25T11:08:25Z',
-            votes: [{
-                "username": "gskellorne0",
-                "up_or_down": 1
-            }]
-        };
         const topicItem = shallow(<TopicItem topic={topic} handleVote={handleVote} />);
 
         topicItem.find('.downvote').simulate('click');
 
         expect(handleVote).toBeCalled();
-    });});
+    });
+});

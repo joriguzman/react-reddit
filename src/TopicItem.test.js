@@ -17,11 +17,11 @@ describe('TopicItem', () => {
     it('renders elements without exploding', () => {
         const topicItem = shallow(<TopicItem topic={topic} />);
 
-        expect(topicItem.find('.upvote').length).toBe(1);
-        expect(topicItem.find('.votes').length).toBe(1);
-        expect(topicItem.find('.downvote').length).toBe(1);
-        expect(topicItem.find('.topic').length).toBe(1);
-        expect(topicItem.find('.creationDate').length).toBe(1);
+        expect(topicItem.find('.upvote')).toHaveLength(1);
+        expect(topicItem.find('.votes')).toHaveLength(1);
+        expect(topicItem.find('.downvote')).toHaveLength(1);
+        expect(topicItem.find('.topic')).toHaveLength(1);
+        expect(topicItem.find('.creationDate')).toHaveLength(1);
     });
 
     it('renders topic property', () => {

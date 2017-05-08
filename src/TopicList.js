@@ -1,5 +1,6 @@
 import React from 'react';
 import TopicItem from './TopicItem';
+import { getMostPopularTopics } from './Topic';
 
 function compareTopicVotes(topicA, topicB) {
     return getVotes(topicB) - getVotes(topicA);

@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import SubmitTopicForm from './SubmitTopicForm';
 
 describe('SubmitTopicForm', () => {
-    it('renders correct elements', () => {
+    it('renders elements without exploding', () => {
         const submitForm = shallow(<SubmitTopicForm />);
 
         expect(submitForm.find('textarea').length).toBe(1);

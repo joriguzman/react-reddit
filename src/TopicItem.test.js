@@ -14,7 +14,7 @@ describe('TopicItem', () => {
         }]
     };
 
-    it('renders correct elements', () => {
+    it('renders elements without exploding', () => {
         const topicItem = shallow(<TopicItem topic={topic} />);
 
         expect(topicItem.find('.upvote').length).toBe(1);

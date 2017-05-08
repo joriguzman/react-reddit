@@ -1,17 +1,17 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import UserProfile from './UserProfile';
 
 describe('UserProfile', () => {
-    it('renders correct elements', () => {
+    it('renders elements without exploding', () => {
         const userProfile = shallow(<UserProfile username='morty' />);
 
         expect(userProfile.contains(<div>Hi morty!</div>)).toBe(true);
     });
 
-    it('renders username property', () => {
-        const userProfile = shallow(<UserProfile username='morty' />);
+    it('sets username property', () => {
+        const userProfile = mount(<UserProfile username='morty' />);
 
-        expect(userProfile.text()).toBe('Hi morty!');
+        expect(userProfile.props().username).toBe('morty');
     });
 });

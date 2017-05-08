@@ -6,13 +6,10 @@ const getSortedTopics = comparison =>
             return sortedTopTopics;
         };
 
-function compareTopicVotes(topicA, topicB) {
-    return getVotes(topicB) - getVotes(topicA);
-}
+const compareTopicVotes = (topicA, topicB) =>
+    getVotes(topicB) - getVotes(topicA);
 
-function getVotes(topic) {
-    return topic.votes.reduce((totalVotes, currentVote) =>
-        totalVotes += currentVote.up_or_down, 0);
-}
+export const getVotes = topic => 
+    topic.votes.reduce((totalVotes, currentVote) => totalVotes += currentVote.up_or_down, 0);
 
 export const getMostPopularTopics = getSortedTopics(compareTopicVotes);

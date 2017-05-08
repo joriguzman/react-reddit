@@ -2,19 +2,10 @@ import React from 'react';
 import TopicItem from './TopicItem';
 import { getMostPopularTopics } from './Topic';
 
-function compareTopicVotes(topicA, topicB) {
-    return getVotes(topicB) - getVotes(topicA);
-}
-
-function getVotes(topic) {
-    return topic.votes.reduce((totalVotes, currentVote) =>
-        totalVotes += currentVote.up_or_down, 0);
-}
-
 const TopicList = ({ topics, handleVote }) => {
-    const sortedTopics = [...topics].sort(compareTopicVotes);
-    const top20Topics = sortedTopics.slice(0, 20);
-    const renderTopicItems = top20Topics.map(topic =>
+    const get20MostPopularTopics = getMostPopularTopics(20);
+    const mostPopularTopics = get20MostPopularTopics(topics);
+    const renderTopicItems = mostPopularTopics.map(topic =>
         <TopicItem key={topic.topic_id} topic={topic} handleVote={handleVote} />);
 
     return (

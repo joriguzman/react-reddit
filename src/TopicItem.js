@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { getTotalVotes } from './TopicDataAccess';
 
 const TopicItem = ({ topic, handleVote }) => {
-    const topicId = topic.topic_id;
+    const topicId = topic.topicId;
     return (
         <li>
             <span className='upvote' onClick={() => handleVote(topicId, 1)}>Upvote</span>

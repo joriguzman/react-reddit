@@ -9,7 +9,7 @@ const getSortedTopics = comparison =>
         };
 
 const getTotalVotes = topic =>
-    topic.votes.reduce((totalVotes, currentVote) => totalVotes += currentVote.up_or_down, 0);
+    topic.votes.reduce((totalVotes, currentVote) => totalVotes += currentVote.upOrDown, 0);
 
 const compareTopicVotes = (topicA, topicB) =>
     getTotalVotes(topicB) - getTotalVotes(topicA);
@@ -18,7 +18,7 @@ const getTopicsSortedByVotes = getSortedTopics(compareTopicVotes);
 const getMostPopularTopics = getTopicsSortedByVotes(jsonData.topics);
 
 const getNewTopicId = (topics) => {
-    const maxTopicId = topics.map(topic => topic.topic_id)
+    const maxTopicId = topics.map(topic => topic.topicId)
         .reduce((max, current) => Math.max(max, current));
     const newTopicId = maxTopicId + 1;
     return newTopicId;
@@ -26,13 +26,13 @@ const getNewTopicId = (topics) => {
 
 const createTopic = (topic, username) => {
     const newTopic = {
-        topic_id: getNewTopicId(jsonData.topics),
+        topicId: getNewTopicId(jsonData.topics),
         topic,
         username,
         creation_date: new Date().toLocaleString(),
         votes: [{
             username,
-            up_or_down: 1
+            upOrDown: 1
         }]
     };
     jsonData.topics.push(newTopic);
@@ -40,13 +40,13 @@ const createTopic = (topic, username) => {
 };
 
 const findTopic = (topicId) => {
-    return jsonData.topics.find(topic => topic.topic_id === topicId);
+    return jsonData.topics.find(topic => topic.topicId === topicId);
 };
 
 const addVote = (topicId, upOrDown, username) => {
     const vote = {
         username,
-        up_or_down: upOrDown
+        upOrDown
     };
     const topicToVoteOn = findTopic(topicId);
     topicToVoteOn.votes.push(vote);

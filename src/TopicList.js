@@ -4,7 +4,7 @@ import TopicItem from './TopicItem';
 
 const TopicList = ({ topics, handleVote }) => {
     const topicItems = topics.map(topic =>
-        <TopicItem key={topic.topic_id} topic={topic} handleVote={handleVote} />);
+        <TopicItem key={topic.topicId} topic={topic} handleVote={handleVote} />);
 
     return (
         <section>

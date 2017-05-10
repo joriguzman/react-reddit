@@ -1,10 +1,9 @@
 import React from 'react';
 import TopicItem from './TopicItem';
-import { getMostPopularTopics } from './Topic';
+import { getMostPopularTopics } from './TopicDataAccess';
 
 const TopicList = ({ topics, handleVote }) => {
-    const get20MostPopularTopics = getMostPopularTopics(20);
-    const mostPopularTopics = get20MostPopularTopics(topics);
+    const mostPopularTopics = getMostPopularTopics(20);
     const renderTopicItems = mostPopularTopics.map(topic =>
         <TopicItem key={topic.topic_id} topic={topic} handleVote={handleVote} />);
 

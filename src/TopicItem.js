@@ -10,7 +10,7 @@ const TopicItem = ({ topic, handleVote }) => {
             <span className='votes'> ({getTotalVotes(topic)}) </span>
             <span className='downvote' onClick={() => handleVote(topicId, -1)}>Downvote</span>
             <div className='topic'>{topic.username}: {topic.topic}</div>
-            <div className='creationDate'>{topic.creation_date}</div>
+            <div className='creationDate'>{topic.creationDate}</div>
         </li>
     );
 };

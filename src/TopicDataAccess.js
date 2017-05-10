@@ -29,7 +29,7 @@ const createTopic = (topic, username) => {
         topicId: getNewTopicId(jsonData.topics),
         topic,
         username,
-        creation_date: new Date().toLocaleString(),
+        creationDate: new Date().toLocaleString(),
         votes: [{
             username,
             upOrDown: 1

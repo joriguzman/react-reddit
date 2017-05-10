@@ -7,7 +7,7 @@ describe('TopicItem', () => {
         topicId: 1,
         username: 'mrmeeseks',
         topic: "Sample topic",
-        creation_date: '2016-10-25T11:08:25Z',
+        creationDate: '2016-10-25T11:08:25Z',
         votes: [{
             "username": "gskellorne0",
             "upOrDown": 1

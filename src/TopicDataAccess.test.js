@@ -1,8 +1,8 @@
-import { getMostPopularTopics, createTopic, addVote, findTopic, getTotalVotes, getAllTopics } from './TopicDataAccess';
+import * as Topic from './TopicDataAccess';
 
 describe('TopicDataAccess', () => {
     it('returns top 20 topics sorted by popularity', () => {
-        const mostPopularTopics = getMostPopularTopics(20);
+        const mostPopularTopics = Topic.getMostPopularTopics(20);
 
         expect(mostPopularTopics).toHaveLength(20);
         expect(mostPopularTopics[0].topicId).toBe(3);
@@ -10,15 +10,15 @@ describe('TopicDataAccess', () => {
     });
 
     it('adds new topic', () => {
-        const allTopics = getAllTopics();
+        const allTopics = Topic.getAllTopics();
         expect(allTopics.length).toBe(30);
 
         const topic = 'New topic';
         const username = 'georgec';
 
-        const newTopic = createTopic(topic, username);
+        const newTopic = Topic.createTopic(topic, username);
 
-        const allTopicsWithNew = getAllTopics();
+        const allTopicsWithNew = Topic.getAllTopics();
         expect(allTopicsWithNew.length).toBe(31);
 
         expect(newTopic.topic).toBe('New topic');
@@ -32,12 +32,12 @@ describe('TopicDataAccess', () => {
     it('adds upvote to topic', () => {
         const topicId = 1;
         const username = 'manuginobili20';
-        const topic = findTopic(topicId);
+        const topic = Topic.findTopic(topicId);
         expect(topic.votes.length).toBe(6);
 
-        addVote(topicId, 1, username);
+        Topic.addVote(topicId, 1, username);
 
-        const upvotedTopic = findTopic(topicId);
+        const upvotedTopic = Topic.findTopic(topicId);
         expect(upvotedTopic.votes.length).toBe(7);
         expect(upvotedTopic.votes[6].username).toBe('manuginobili20');
         expect(upvotedTopic.votes[6].upOrDown).toBe(1);
@@ -46,12 +46,12 @@ describe('TopicDataAccess', () => {
     it('add downvote to topic', () => {
         const topicId = 2;
         const username = 'manuginobili20';
-        const topic = findTopic(topicId);
+        const topic = Topic.findTopic(topicId);
         expect(topic.votes.length).toBe(6);
 
-        addVote(topicId, -1, username);
+        Topic.addVote(topicId, -1, username);
 
-        const downVotedTopic = findTopic(topicId);
+        const downVotedTopic = Topic.findTopic(topicId);
         expect(downVotedTopic.votes.length).toBe(7);
         expect(downVotedTopic.votes[6].username).toBe('manuginobili20');
         expect(downVotedTopic.votes[6].upOrDown).toBe(-1);
@@ -59,8 +59,8 @@ describe('TopicDataAccess', () => {
 
     it('returns total votes', () => {
         const topicId = 3;
-        const topic = findTopic(topicId);
-        const totalVotes = getTotalVotes(topic);
+        const topic = Topic.findTopic(topicId);
+        const totalVotes = Topic.getTotalVotes(topic);
 
         expect(totalVotes).toBe(6);
     });

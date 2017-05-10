@@ -4,7 +4,7 @@ import Title from './Title';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
-import { getMostPopularTopics, createTopic, addVote } from './TopicDataAccess';
+import * as Topic from './TopicDataAccess';
 
 const title = 'REACT REDDIT';
 const username = 'anonymous';
@@ -16,7 +16,7 @@ class App extends Component {
             title,
             username,
             newTopic: '',
-            topics: getMostPopularTopics(20),
+            topics: Topic.getMostPopularTopics(20),
         }
     }
 
@@ -25,17 +25,17 @@ class App extends Component {
     }
 
     handleSubmit = (event) => {
-        createTopic(this.state.newTopic, username);
+        Topic.createTopic(this.state.newTopic, username);
         this.setState({
             newTopic: '',
-            topics: getMostPopularTopics(20),
+            topics: Topic.getMostPopularTopics(20),
         });
         event.preventDefault();
     }
 
     handleVote = (topicId, upOrDownVote) => {
-        addVote(topicId, upOrDownVote, username);
-        this.setState({ topics: getMostPopularTopics(20) });
+        Topic.addVote(topicId, upOrDownVote, username);
+        this.setState({ topics: Topic.getMostPopularTopics(20) });
     }
 
     render() {

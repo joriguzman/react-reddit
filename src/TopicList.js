@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TopicItem from './TopicItem';
 
 const TopicList = ({ topics, handleVote }) => {
@@ -13,6 +14,11 @@ const TopicList = ({ topics, handleVote }) => {
             </ul>
         </section>
     );
+}
+
+TopicList.propTypes = {
+    topics: PropTypes.array.isRequired,
+    handleVote: PropTypes.func
 }
 
 export default TopicList;

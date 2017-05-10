@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getTotalVotes } from './TopicDataAccess';
 
 const TopicItem = ({ topic, handleVote }) => {
@@ -13,5 +14,10 @@ const TopicItem = ({ topic, handleVote }) => {
         </li>
     );
 };
+
+TopicItem.propTypes = {
+    topic: PropTypes.object.isRequired,
+    handleVote: PropTypes.func
+}
 
 export default TopicItem;

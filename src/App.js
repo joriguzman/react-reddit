@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Title from './Title';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
@@ -6,7 +7,7 @@ import TopicList from './TopicList';
 import { getMostPopularTopics, createTopic, addVote } from './TopicDataAccess';
 
 const title = 'REACT REDDIT';
-const username = 'squanch';
+const username = 'anonymous';
 
 class App extends Component {
     constructor(props) {
@@ -54,6 +55,10 @@ class App extends Component {
             </div>
         );
     }
+}
+
+App.propTypes = {
+    jsonObj: PropTypes.object.isRequired
 }
 
 export default App;

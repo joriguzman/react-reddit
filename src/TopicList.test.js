@@ -3,9 +3,35 @@ import { shallow } from 'enzyme';
 import TopicList from './TopicList';
 import TopicItem from './TopicItem';
 
-describe('TopicItem', () => {
-    it('renders elements without exploding');
-    it('displays top 20 topics sorted by number of votes');
-    it('calls handleVote when a topic\'s upvote is clicked');
-    it('calls handleVote when a topic\'s downvote is clicked');
+describe('TopicList', () => {
+    const topics = [{
+        topicId: 1,
+        username: 'user1',
+        topic: "Sample topic1",
+        votes: [{
+            username: 'user1',
+            upOrDown: 1
+        }]
+    },
+    {
+        topicId: 2,
+        username: 'user2',
+        topic: 'Sample topic2',
+        votes: [{
+            username: 'user2',
+            upOrDown: 1
+        }]
+    }];
+
+    it('renders two TopicItems', () => {
+        const topicList = shallow(<TopicList topics={topics} />);
+
+        expect(topicList.find(TopicItem).length).toBe(2);
+    });
+
+    it('renders a ".topicList"', () => {
+        const topicList = shallow(<TopicList topics={topics} />);
+
+        expect(topicList.find('.topicList').length).toBe(1);
+    });
 });

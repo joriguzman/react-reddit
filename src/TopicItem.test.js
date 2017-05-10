@@ -5,7 +5,7 @@ import TopicItem from './TopicItem';
 describe('TopicItem', () => {
     const topic = {
         topicId: 1,
-        username: 'mrmeeseks',
+        username: 'mrmeeseeks',
         topic: "Sample topic",
         creationDate: '2016-10-25T11:08:25Z',
         votes: [{
@@ -24,11 +24,11 @@ describe('TopicItem', () => {
         expect(topicItem.find('.creationDate')).toHaveLength(1);
     });
 
-    it('renders topic property', () => {
+    it('renders text elements', () => {
         const topicItem = shallow(<TopicItem topic={topic} />);
 
         expect(topicItem.find('.votes').text()).toContain('(1)');
-        expect(topicItem.find('.topic').text()).toContain('mrmeeseks: Sample topic');
+        expect(topicItem.find('.topic').text()).toContain('mrmeeseeks: Sample topic');
     });
 
     it('calls handleVote when upvote is clicked', () => {

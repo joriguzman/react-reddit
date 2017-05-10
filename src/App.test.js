@@ -6,8 +6,7 @@ import Title from './Title';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
-
-const jsonData = require('./database.json');
+import jsonData from './database.json';
 
 describe('App', () => {
   it('renders without exploding', () => {
@@ -37,11 +36,5 @@ describe('App', () => {
     const app = shallow(<App jsonObj={jsonData} />);
 
     expect(app.find(TopicList).length).toBe(1);
-  });
-
-  it('adds topic when user submits topic', () => {
-    const app = shallow(<App jsonObj={jsonData} />);
-
-    app.find('SubmitTopicForm').simulate('onSubmit');
   });
 });

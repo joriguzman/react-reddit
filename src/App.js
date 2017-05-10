@@ -3,30 +3,10 @@ import Title from './Title';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
+import { getMostPopularTopics, createTopic, addVote } from './TopicDataAccess';
 
 const title = 'REACT REDDIT';
 const username = 'squanch';
-
-function createVote(topicId, upOrDownVote, username) {
-    const vote = {
-        topic_id: topicId,
-        username: username,
-        up_or_down: upOrDownVote,
-        timestamp: new Date().toLocaleString() // TODO fix this
-    }
-    return vote;
-}
-
-function getNewTopicId(topics) {
-    const maxTopicId = topics.map(topic => topic.topic_id)
-        .reduce((max, current) => Math.max(max, current));
-    const newTopicId = maxTopicId + 1;
-    return newTopicId;
-}
-
-function findTopic(topics, topicId) {
-    return topics.find(topic => topic.topic_id === topicId);
-}
 
 class App extends Component {
     constructor(props) {
@@ -34,41 +14,27 @@ class App extends Component {
         this.state = {
             title,
             username,
-            topics: props.jsonObj.topics,
-            newTopic: ''
+            newTopic: '',
+            topics: getMostPopularTopics(20),
         }
     }
 
-    handleVote = (topicId, upOrDownVote) => {
-        const vote = createVote(topicId, upOrDownVote, username);
-        const topic = findTopic(this.state.topics, topicId);
-        topic.votes = topic.votes.concat([vote]);
-        this.setState({ topics: this.state.topics });
-    }
-
-    handleInputChange = (event) => {
+    handleTopicInputChange = (event) => {
         this.setState({ newTopic: event.target.value });
     }
 
     handleSubmit = (event) => {
-        const { topics, newTopic } = this.state;
-        const topicId = getNewTopicId(topics);
-        const votes = [];
-        votes.push(createVote(topicId, 1, username));
-
-        const topic = {
-            topic_id: topicId,
-            username: username,
-            topic: newTopic,
-            creation_date: new Date().toLocaleString(),
-            votes: votes
-        };
-
+        createTopic(this.state.newTopic, username);
         this.setState({
-            topics: topics.concat([topic]),
-            newTopic: ''
+            newTopic: '',
+            topics: getMostPopularTopics(20),
         });
         event.preventDefault();
+    }
+
+    handleVote = (topicId, upOrDownVote) => {
+        addVote(topicId, upOrDownVote, username);
+        this.setState({ topics: getMostPopularTopics(20) });
     }
 
     render() {
@@ -76,11 +42,11 @@ class App extends Component {
             <div className='home'>
                 <header>
                     <Title text={this.state.title} />
-                    <UserProfile username={username} />
+                    <UserProfile username={this.state.username} />
                 </header>
                 <main>
                     <SubmitTopicForm newTopic={this.state.newTopic}
-                        onInputChange={this.handleInputChange}
+                        onTopicInputChange={this.handleTopicInputChange}
                         onSubmit={this.handleSubmit} />
                     <TopicList topics={this.state.topics}
                         handleVote={this.handleVote} />

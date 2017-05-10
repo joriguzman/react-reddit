@@ -1,17 +1,17 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Title from './Title';
 
 describe('Title', () => {
-    it('renders correct elements without exploding', () => {
+    it('renders elements without exploding', () => {
         const title = shallow(<Title text='TITLE' />);
 
-        expect(title.contains(<div><h1>TITLE</h1></div>)).toBe(true);
+        expect(title.find('h1').length).toBe(1);
     });
 
     it('sets text property', () => {
-        const title = mount(<Title text='TITLE' />);
+        const title = shallow(<Title text='TITLE' />);
 
-        expect(title.props().text).toBe('TITLE');
+        expect(title.text()).toBe('TITLE');
     });
 });

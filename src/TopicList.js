@@ -7,12 +7,16 @@ const TopicList = ({ topics, handleVote }) => {
         <TopicItem key={topic.topicId} topic={topic} handleVote={handleVote} />);
 
     return (
-        <section>
-            <h2><i>Topics</i></h2>
-            <ul className="topicList">
+        <table>
+            <thead>
+                <tr>
+                    <th>Topics</th>
+                </tr>
+            </thead>
+            <tbody>
                 {topicItems}
-            </ul>
-        </section>
+            </tbody>
+        </table>
     );
 }
 

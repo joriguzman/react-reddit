@@ -21,14 +21,13 @@ describe('TopicItem', () => {
         expect(topicItem.find('.votes')).toHaveLength(1);
         expect(topicItem.find('.downvote')).toHaveLength(1);
         expect(topicItem.find('.topic')).toHaveLength(1);
-        expect(topicItem.find('.creationDate')).toHaveLength(1);
     });
 
     it('renders text elements', () => {
         const topicItem = shallow(<TopicItem topic={topic} />);
 
         expect(topicItem.find('.votes').text()).toContain('(1)');
-        expect(topicItem.find('.topic').text()).toContain('mrmeeseeks: Sample topic');
+        expect(topicItem.find('.topic').text()).toContain('Sample topic');
     });
 
     it('calls handleVote when upvote is clicked', () => {

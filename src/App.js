@@ -10,6 +10,10 @@ const title = 'REACT REDDIT';
 const username = 'anonymous';
 
 class App extends Component {
+    static propTypes = {
+        topics: PropTypes.array.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +22,7 @@ class App extends Component {
             newTopic: '',
             filter: 'Top',
             topics: props.topics,
-        }
+        };
     }
 
     handleTopicInputChange = (event) => {
@@ -44,7 +48,7 @@ class App extends Component {
     }
 
     handleFilterChange = (event) => {
-        this.setState({filter: event.target.value});
+        this.setState({ filter: event.target.value });
         event.preventDefault();
     }
 
@@ -74,10 +78,6 @@ class App extends Component {
             </div>
         );
     }
-}
-
-App.propTypes = {
-    topics: PropTypes.array.isRequired
 }
 
 export default App;

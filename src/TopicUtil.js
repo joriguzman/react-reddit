@@ -9,15 +9,20 @@ const getSortedTopics = comparison =>
                 return topic;
             });
             const sortedTopics = [...topicsWithTotalVotes].sort(comparison);
-            const sortedTopTopics = sortedTopics.slice(0, numberOfItems);
-            return sortedTopTopics;
+
+            if (numberOfItems === undefined || numberOfItems === null) {
+                return sortedTopics;
+            } else {
+                return sortedTopics.slice(0, numberOfItems);
+            }
         };
 
 const compareTopicVotes = (topicA, topicB) =>
     topicB.totalVotes - topicA.totalVotes;
 
 const getTopicsSortedByVotes = getSortedTopics(compareTopicVotes);
-const getTop20TopicsSortedByVotes = getTopicsSortedByVotes(20);
+const getTop5TopicsSortedByVotes = getTopicsSortedByVotes(5);
+const getAllTopicsSortedByVotes = getTopicsSortedByVotes();
 
 const getNewTopicId = (topics) => {
     const maxTopicId = topics.map(topic => topic.topicId)
@@ -28,7 +33,11 @@ const getNewTopicId = (topics) => {
 
 const TopicUtil = {
     getMostPopularTopics(topics) {
-        return getTop20TopicsSortedByVotes(topics);
+        return getTop5TopicsSortedByVotes(topics);
+    },
+
+    getAllTopicsSortedByVotes(topics) {
+        return getAllTopicsSortedByVotes(topics);
     },
 
     createTopic(topics, topic, username) {

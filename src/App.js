@@ -16,6 +16,7 @@ class App extends Component {
             title,
             username,
             newTopic: '',
+            filter: 'Top',
             topics: props.topics,
         }
     }
@@ -42,9 +43,16 @@ class App extends Component {
         this.setState({ topics: topics });
     }
 
+    handleFilterChange = (event) => {
+        this.setState({filter: event.target.value});
+        event.preventDefault();
+    }
+
     render() {
-        const { title, username, newTopic, topics } = this.state;
-        const sortedTopics = TopicUtil.getMostPopularTopics(topics);
+        const { title, username, newTopic, topics, filter } = this.state;
+        const sortedTopics = filter === 'Top' ?
+            TopicUtil.getMostPopularTopics(topics) :
+            TopicUtil.getAllTopicsSortedByVotes(topics);
         return (
             <div className='home'>
                 <header>
@@ -55,6 +63,11 @@ class App extends Component {
                     <SubmitTopicForm newTopic={newTopic}
                         onTopicInputChange={this.handleTopicInputChange}
                         onSubmit={this.handleSubmit} />
+                    Filter:
+                    <select value={filter} onChange={this.handleFilterChange}>
+                        <option value="All">All</option>
+                        <option value="Top">Top</option>
+                    </select>
                     <TopicList topics={sortedTopics}
                         handleVote={this.handleVote} />
                 </main>

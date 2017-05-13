@@ -9,11 +9,11 @@ import TopicList from './TopicList';
 import jsonData from './database.json';
 
 describe('App', () => {
-  const app = shallow(<App dataStore={jsonData} />);
+  const app = shallow(<App topics={jsonData} />);
 
   it('renders without exploding', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<App dataStore={jsonData} />, div);
+    ReactDOM.render(<App topics={jsonData} />, div);
   });
 
   it('renders Title component', () => {

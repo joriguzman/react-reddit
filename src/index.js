@@ -5,6 +5,6 @@ import './index.css';
 import jsonData from './database.json';
 
 ReactDOM.render(
-  <App dataStore={jsonData} />,
+  <App topics={jsonData} />,
   document.getElementById('root')
 );

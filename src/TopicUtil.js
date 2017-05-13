@@ -1,18 +1,17 @@
+const getTotalVotes = topic =>
+    topic.votes.reduce((totalVotes, currentVote) => totalVotes += currentVote.upOrDown, 0);
+
 const getSortedTopics = comparison =>
     numberOfItems =>
         topics => {
             const topicsWithTotalVotes = topics.map(topic => {
                 topic.totalVotes = getTotalVotes(topic);
-                console.log('total votes', topic.totalVotes);
                 return topic;
             });
             const sortedTopics = [...topicsWithTotalVotes].sort(comparison);
             const sortedTopTopics = sortedTopics.slice(0, numberOfItems);
             return sortedTopTopics;
         };
-
-const getTotalVotes = topic =>
-    topic.votes.reduce((totalVotes, currentVote) => totalVotes += currentVote.upOrDown, 0);
 
 const compareTopicVotes = (topicA, topicB) =>
     topicB.totalVotes - topicA.totalVotes;

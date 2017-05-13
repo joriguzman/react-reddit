@@ -16,7 +16,7 @@ class App extends Component {
             title,
             username,
             newTopic: '',
-            topics: props.dataStore.topics,
+            topics: props.topics,
         }
     }
 
@@ -64,7 +64,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-    dataStore: PropTypes.object.isRequired
+    topics: PropTypes.array.isRequired
 }
 
 export default App;

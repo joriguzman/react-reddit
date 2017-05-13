@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import jsonData from './database.json';
+import loadInitialTopics from './database';
 
 ReactDOM.render(
-  <App topics={jsonData} />,
+  <App topics={loadInitialTopics()} />,
   document.getElementById('root')
 );

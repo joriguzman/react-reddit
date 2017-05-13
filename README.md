@@ -2,9 +2,7 @@
 Reddit clone using React.
 
 ### TODO
-- Tests
-- Make code functional
-- Add prop types
+- use Higher Order Components to keep your React applications tidy, well structured and easy to maintain. 
 - Styling
 - Deploy to Heroku / Docker
 

@@ -4,7 +4,7 @@ import Title from './Title';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
-import * as Topic from './TopicDataAccess';
+import TopicUtil from './TopicUtil';
 
 const title = 'REACT REDDIT';
 const username = 'anonymous';
@@ -16,7 +16,7 @@ class App extends Component {
             title,
             username,
             newTopic: '',
-            topics: Topic.getMostPopularTopics(20),
+            topics: props.dataStore.topics,
         }
     }
 
@@ -25,31 +25,37 @@ class App extends Component {
     }
 
     handleSubmit = (event) => {
-        Topic.createTopic(this.state.newTopic, username);
+        const { topics, newTopic, username } = this.state;
+        const topic = TopicUtil.createTopic(topics, newTopic, username);
         this.setState({
             newTopic: '',
-            topics: Topic.getMostPopularTopics(20),
+            topics: topics.concat([topic])
         });
         event.preventDefault();
     }
 
     handleVote = (topicId, upOrDownVote) => {
-        Topic.addVote(topicId, upOrDownVote, username);
-        this.setState({ topics: Topic.getMostPopularTopics(20) });
+        const { topics } = this.state;
+        const vote = TopicUtil.createVote(upOrDownVote, username);
+        const topic = TopicUtil.findTopic(topics, topicId);
+        topic.votes = topic.votes.concat([vote]);
+        this.setState({ topics: topics });
     }
 
     render() {
+        const { title, username, newTopic, topics } = this.state;
+        const sortedTopics = TopicUtil.getMostPopularTopics(topics);
         return (
             <div className='home'>
                 <header>
-                    <Title text={this.state.title} />
-                    <UserProfile username={this.state.username} />
+                    <Title text={title} />
+                    <UserProfile username={username} />
                 </header>
                 <main>
-                    <SubmitTopicForm newTopic={this.state.newTopic}
+                    <SubmitTopicForm newTopic={newTopic}
                         onTopicInputChange={this.handleTopicInputChange}
                         onSubmit={this.handleSubmit} />
-                    <TopicList topics={this.state.topics}
+                    <TopicList topics={sortedTopics}
                         handleVote={this.handleVote} />
                 </main>
             </div>
@@ -58,7 +64,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-    jsonObj: PropTypes.object.isRequired
+    dataStore: PropTypes.object.isRequired
 }
 
 export default App;

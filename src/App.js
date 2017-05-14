@@ -19,23 +19,15 @@ class App extends Component {
         this.state = {
             title,
             username,
-            newTopic: '',
             filter: 'Top',
             topics: props.topics,
         };
     }
 
-    handleTopicInputChange = (event) => {
-        this.setState({ newTopic: event.target.value });
-    }
-
-    handleSubmit = (event) => {
-        const { topics, newTopic, username } = this.state;
-        const topic = TopicUtil.createTopic(topics, newTopic, username);
-        this.setState({
-            newTopic: '',
-            topics: topics.concat([topic])
-        });
+    handleSubmit = (event, newTopic) => {
+        const { topics, username } = this.state;
+        const newTopics = TopicUtil.createTopic(topics, newTopic, username);
+        this.setState({ topics: newTopics });
         event.preventDefault();
     }
 
@@ -57,7 +49,7 @@ class App extends Component {
     }
 
     render() {
-        const { title, username, newTopic, topics, filter } = this.state;
+        const { title, username, topics, filter } = this.state;
         const sortedTopics = filter === 'Top' ?
             TopicUtil.getMostPopularTopics(topics) :
             TopicUtil.getAllTopicsSortedByVotes(topics);
@@ -69,9 +61,7 @@ class App extends Component {
                     <UserProfile username={username} />
                 </header>
                 <main>
-                    <SubmitTopicForm newTopic={newTopic}
-                        onTopicInputChange={this.handleTopicInputChange}
-                        onSubmit={this.handleSubmit} />
+                    <SubmitTopicForm handleSubmit={this.handleSubmit} />
                     Filter:
                     <select value={filter} onChange={this.handleFilterChange}>
                         <option value="All">All</option>

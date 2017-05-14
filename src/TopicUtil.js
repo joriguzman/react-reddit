@@ -25,10 +25,6 @@ const getNewTopicId = (topics) => {
     return newTopicId;
 };
 
-const findByTopicId = (topics, topicId) => {
-    return topics.find(topic => topic.topicId === topicId);
-};
-
 const replaceTopic = (topics, newTopic) => {
     const currentTopicIndex = topics.findIndex(currTopic => currTopic.topicId === newTopic.topicId);
     const newTopics = [...topics.slice(0, currentTopicIndex), newTopic, ...topics.slice(currentTopicIndex + 1)];
@@ -50,23 +46,11 @@ const TopicUtil = {
             topic,
             username,
             creationDate: new Date().toLocaleString(),
-            votes: [{
-                username,
-                upOrDown: 1
-            }]
+            upvotes: [{ username }],
+            downvotes: []
         };
-        return newTopic;
-    },
-
-    createVote(upOrDown, username) {
-        return {
-            username,
-            upOrDown
-        };
-    },
-
-    findTopic(topics, topicId) {
-        return findByTopicId(topics, topicId);
+        const newTopics = topics.concat([newTopic]);
+        return newTopics;
     },
 
     // Create new copy of topics with vote added to topic. Don't mutate existing topics.

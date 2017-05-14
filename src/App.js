@@ -39,12 +39,16 @@ class App extends Component {
         event.preventDefault();
     }
 
-    handleVote = (topicId, upOrDownVote) => {
-        const { topics } = this.state;
-        const vote = TopicUtil.createVote(upOrDownVote, username);
-        const topic = TopicUtil.findTopic(topics, topicId);
-        topic.votes = topic.votes.concat([vote]);
-        this.setState({ topics: topics });
+    handleUpvote = (topic) => {
+        const { topics, username } = this.state;
+        const newTopics = TopicUtil.upvoteTopic(topics, topic, username);
+        this.setState({ topics: newTopics });
+    }
+
+    handleDownvote = (topicId) => {
+        const { topics, username } = this.state;
+        const newTopics = TopicUtil.downvoteTopic(topics, topicId, username);
+        this.setState({ topics: newTopics });
     }
 
     handleFilterChange = (event) => {
@@ -57,6 +61,7 @@ class App extends Component {
         const sortedTopics = filter === 'Top' ?
             TopicUtil.getMostPopularTopics(topics) :
             TopicUtil.getAllTopicsSortedByVotes(topics);
+
         return (
             <div className='home'>
                 <header>
@@ -73,7 +78,8 @@ class App extends Component {
                         <option value="Top">Top</option>
                     </select>
                     <TopicList topics={sortedTopics}
-                        handleVote={this.handleVote} />
+                        handleUpvote={this.handleUpvote}
+                        handleDownvote={this.handleDownvote} />
                 </main>
             </div>
         );

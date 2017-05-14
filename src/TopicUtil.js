@@ -15,7 +15,7 @@ const compareTopicVotes = (topicA, topicB) => {
 };
 
 const getTopicsSortedByVotes = getSortedTopics(compareTopicVotes);
-const getTop5TopicsSortedByVotes = getTopicsSortedByVotes(5);
+const getTop20TopicsSortedByVotes = getTopicsSortedByVotes(20);
 const getAllTopicsSortedByVotes = getTopicsSortedByVotes();
 
 const getNewTopicId = (topics) => {
@@ -25,9 +25,19 @@ const getNewTopicId = (topics) => {
     return newTopicId;
 };
 
+const findByTopicId = (topics, topicId) => {
+    return topics.find(topic => topic.topicId === topicId);
+};
+
+const replaceTopic = (topics, newTopic) => {
+    const currentTopicIndex = topics.findIndex(currTopic => currTopic.topicId === newTopic.topicId);
+    const newTopics = [...topics.slice(0, currentTopicIndex), newTopic, ...topics.slice(currentTopicIndex + 1)];
+    return newTopics;
+};
+
 const TopicUtil = {
     getMostPopularTopics(topics) {
-        return getTop5TopicsSortedByVotes(topics);
+        return getTop20TopicsSortedByVotes(topics);
     },
 
     getAllTopicsSortedByVotes(topics) {
@@ -56,8 +66,20 @@ const TopicUtil = {
     },
 
     findTopic(topics, topicId) {
-        return topics.find(topic => topic.topicId === topicId);
+        return findByTopicId(topics, topicId);
+    },
+
+    // Create new copy of topics with vote added to topic. Don't mutate existing topics.
+    upvoteTopic(topics, topic, username) {
+        const newTopic = { ...topic, upvotes: topic.upvotes.concat([{ username }]) };
+        return replaceTopic(topics, newTopic);
+    },
+
+    // Create new copy of topics with vote added to topic. Don't mutate existing topics.
+    downvoteTopic(topics, topic, username) {
+        const newTopic = { ...topic, downvotes: topic.downvotes.concat([{ username }]) };
+        return replaceTopic(topics, newTopic);
     }
-}
+};
 
 export default TopicUtil;

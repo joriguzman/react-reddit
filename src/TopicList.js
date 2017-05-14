@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TopicItem from './TopicItem';
 
-const TopicList = ({ topics, handleVote }) => {
+const TopicList = ({ topics, handleUpvote, handleDownvote }) => {
     const topicItems = topics.map(topic =>
-        <TopicItem key={topic.topicId} topic={topic} handleVote={handleVote} />);
+        <TopicItem key={topic.topicId} topic={topic}
+            handleUpvote={handleUpvote} handleDownvote={handleDownvote} />);
 
     return (
         <table>
@@ -18,11 +19,12 @@ const TopicList = ({ topics, handleVote }) => {
             </tbody>
         </table>
     );
-}
+};
 
 TopicList.propTypes = {
     topics: PropTypes.array.isRequired,
-    handleVote: PropTypes.func
-}
+    handleUpvote: PropTypes.func,
+    handleDownvote: PropTypes.func
+};
 
 export default TopicList;

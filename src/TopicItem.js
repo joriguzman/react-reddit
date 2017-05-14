@@ -1,28 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const TopicItem = ({ topic, handleVote }) => {
-    const topicId = topic.topicId;
-    const sumOfVotes = topic.upvotes.length - topic.downvotes.length;
+class TopicItem extends Component {
+    static propTypes = {
+        topic: PropTypes.object.isRequired,
+        handleUpvote: PropTypes.func,
+        handleDownvote: PropTypes.func
+    }
 
-    return (
-        <tr>
-            <td>
-                <span className='upvote' onClick={() => handleVote(topicId, 1)}>Upvote</span>
-                <span className='votes'> ({sumOfVotes}) </span>
-                <span className='downvote' onClick={() => handleVote(topicId, -1)}>Downvote</span>
-            </td>
-            <td>
-                <p className='topic'>{topic.topic}</p>
-                <p className='author'>Posted by {topic.username} on {topic.creationDate}</p>
-            </td>
-        </tr>
-    );
-};
+    handleUpvote = () => {
+        this.props.handleUpvote(this.props.topic);
+    }
 
-TopicItem.propTypes = {
-    topic: PropTypes.object.isRequired,
-    handleVote: PropTypes.func
+    handleDownvote = () => {
+        this.props.handleDownvote(this.props.topic);
+    }
+
+    render() {
+        const { topic } = this.props;
+        const sumOfVotes = topic.upvotes.length - topic.downvotes.length;
+
+        return (
+            <tr>
+                <td>
+                    <span className='upvote' onClick={this.handleUpvote}>Upvote</span>
+                    <span className='votes'> ({sumOfVotes}) </span>
+                    <span className='downvote' onClick={this.handleDownvote}>Downvote</span>
+                </td>
+                <td>
+                    <p className='topic'>{topic.topic}</p>
+                    <p className='author'>Posted by {topic.username} on {topic.creationDate}</p>
+                </td>
+            </tr>
+        );
+    }
 }
 
 export default TopicItem;

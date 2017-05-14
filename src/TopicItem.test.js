@@ -32,21 +32,21 @@ describe('TopicItem', () => {
         expect(topicItem.find('.topic').text()).toContain('Sample topic');
     });
 
-    it('calls handleVote when upvote is clicked', () => {
-        const handleVote = jest.fn();
-        const topicItem = shallow(<TopicItem topic={topic} handleVote={handleVote} />);
+    it('calls handleUpvote when upvote is clicked', () => {
+        const handleUpvote = jest.fn();
+        const topicItem = shallow(<TopicItem topic={topic} handleUpvote={handleUpvote} />);
 
         topicItem.find('.upvote').simulate('click');
 
-        expect(handleVote).toBeCalled();
+        expect(handleUpvote).toBeCalled();
     });
 
-    it('calls handleVote when downvote is clicked', () => {
-        const handleVote = jest.fn();
-        const topicItem = shallow(<TopicItem topic={topic} handleVote={handleVote} />);
+    it('calls handleDownvote when downvote is clicked', () => {
+        const handleDownvote = jest.fn();
+        const topicItem = shallow(<TopicItem topic={topic} handleDownvote={handleDownvote} />);
 
         topicItem.find('.downvote').simulate('click');
 
-        expect(handleVote).toBeCalled();
+        expect(handleDownvote).toBeCalled();
     });
 });

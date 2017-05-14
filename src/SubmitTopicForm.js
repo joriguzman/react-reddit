@@ -16,12 +16,12 @@ const SubmitTopicForm = ({ newTopic, onSubmit, onTopicInputChange }) => {
             <button disabled={isTopicEmpty}>Submit!</button>
         </form>
     );
-}
+};
 
 SubmitTopicForm.propTypes = {
     newTopic: PropTypes.string.isRequired,
     onSubmit: PropTypes.func,
     onTopicInputChange: PropTypes.func
-}
+};
 
 export default SubmitTopicForm;

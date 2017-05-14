@@ -1,14 +1,7 @@
-const getTotalVotes = topic =>
-    topic.votes.reduce((totalVotes, currentVote) => totalVotes += currentVote.upOrDown, 0);
-
 const getSortedTopics = comparison =>
     numberOfItems =>
         topics => {
-            const topicsWithTotalVotes = topics.map(topic => {
-                topic.totalVotes = getTotalVotes(topic);
-                return topic;
-            });
-            const sortedTopics = [...topicsWithTotalVotes].sort(comparison);
+            const sortedTopics = [...topics].sort(comparison);
 
             if (numberOfItems === undefined || numberOfItems === null) {
                 return sortedTopics;
@@ -17,8 +10,9 @@ const getSortedTopics = comparison =>
             }
         };
 
-const compareTopicVotes = (topicA, topicB) =>
-    topicB.totalVotes - topicA.totalVotes;
+const compareTopicVotes = (topicA, topicB) => {
+    return (topicB.upvotes.length - topicB.downvotes.length) - (topicA.upvotes.length - topicA.downvotes.length);
+};
 
 const getTopicsSortedByVotes = getSortedTopics(compareTopicVotes);
 const getTop5TopicsSortedByVotes = getTopicsSortedByVotes(5);

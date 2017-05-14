@@ -6,13 +6,14 @@ describe('TopicItem', () => {
     const topic = {
         topicId: 1,
         username: 'mrmeeseeks',
-        topic: "Sample topic",
+        topic: 'Sample topic',
         creationDate: '2016-10-25T11:08:25Z',
         totalVotes: 1,
-        votes: [{
-            "username": "gskellorne0",
-            "upOrDown": 1
-        }]
+        upvotes: [{
+            'username': 'gskellorne0',
+            'upOrDown': 1
+        }],
+        downvotes: []
     };
 
     it('renders elements without exploding', () => {

@@ -7,7 +7,7 @@ describe('TopicList', () => {
     const topics = [{
         topicId: 1,
         username: 'user1',
-        topic: "Sample topic1",
+        topic: 'Sample topic1',
         votes: [{
             username: 'user1',
             upOrDown: 1

@@ -9,6 +9,7 @@ import TopicUtil from './TopicUtil';
 const title = 'REACT REDDIT';
 const username = 'anonymous';
 
+// Main component of the application
 class App extends Component {
     static propTypes = {
         topics: PropTypes.array.isRequired
@@ -17,13 +18,13 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title,
-            username,
-            filter: 'Top',
+            username: username,
+            displayType: 'Top',
             topics: props.topics,
         };
     }
 
+    // Creates new topic
     handleSubmit = (event, newTopic) => {
         const { topics, username } = this.state;
         const newTopics = TopicUtil.createTopic(topics, newTopic, username);
@@ -31,26 +32,29 @@ class App extends Component {
         event.preventDefault();
     }
 
+    // Upvotes a topic
     handleUpvote = (topic) => {
         const { topics, username } = this.state;
         const newTopics = TopicUtil.upvoteTopic(topics, topic, username);
         this.setState({ topics: newTopics });
     }
 
+    // Downvotes a topic
     handleDownvote = (topicId) => {
         const { topics, username } = this.state;
         const newTopics = TopicUtil.downvoteTopic(topics, topicId, username);
         this.setState({ topics: newTopics });
     }
 
-    handleFilterChange = (event) => {
-        this.setState({ filter: event.target.value });
+    // Changes display
+    handleDisplayTypeChange = (event) => {
+        this.setState({ displayType: event.target.value });
         event.preventDefault();
     }
 
     render() {
-        const { title, username, topics, filter } = this.state;
-        const sortedTopics = filter === 'Top' ?
+        const { username, topics, displayType } = this.state;
+        const sortedTopics = displayType === 'Top' ?
             TopicUtil.getMostPopularTopics(topics) :
             TopicUtil.getAllTopicsSortedByVotes(topics);
 
@@ -62,8 +66,8 @@ class App extends Component {
                 </header>
                 <main>
                     <SubmitTopicForm handleSubmit={this.handleSubmit} />
-                    Filter:
-                    <select value={filter} onChange={this.handleFilterChange}>
+                    Display:
+                    <select value={displayType} onChange={this.handleDisplayTypeChange}>
                         <option value="All">All</option>
                         <option value="Top">Top</option>
                     </select>

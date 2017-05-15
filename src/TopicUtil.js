@@ -1,22 +1,18 @@
-const getSortedTopics = comparison =>
-    numberOfItems =>
-        topics => {
-            const sortedTopics = [...topics].sort(comparison);
-
-            if (numberOfItems === undefined || numberOfItems === null) {
-                return sortedTopics;
-            } else {
-                return sortedTopics.slice(0, numberOfItems);
-            }
-        };
+const getSortedTopics = comparison => // TODO Put numberOfItemsLast
+    topics => {
+        const sortedTopics = [...topics].sort(comparison);
+        return sortedTopics;
+    };
 
 const compareTopicVotes = (topicA, topicB) => {
     return (topicB.upvotes.length - topicB.downvotes.length) - (topicA.upvotes.length - topicA.downvotes.length);
 };
 
 const getTopicsSortedByVotes = getSortedTopics(compareTopicVotes);
-const getTop20TopicsSortedByVotes = getTopicsSortedByVotes(20);
-const getAllTopicsSortedByVotes = getTopicsSortedByVotes();
+const getTop20TopicsSortedByVotes = (topics) => {
+    const sortedTopics = getTopicsSortedByVotes(topics);
+    return sortedTopics.slice(0, 20);
+};
 
 const getNewTopicId = (topics) => {
     const maxTopicId = topics.map(topic => topic.topicId)
@@ -32,12 +28,12 @@ const replaceTopic = (topics, newTopic) => {
 };
 
 const TopicUtil = {
-    getMostPopularTopics(topics) {
+    getTop20TopicsSortedByVotes(topics) {
         return getTop20TopicsSortedByVotes(topics);
     },
 
     getAllTopicsSortedByVotes(topics) {
-        return getAllTopicsSortedByVotes(topics);
+        return getTopicsSortedByVotes(topics);
     },
 
     createTopic(topics, topic, username) {

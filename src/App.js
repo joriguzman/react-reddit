@@ -4,59 +4,32 @@ import Title from './Title';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
-import TopicUtil from './TopicUtil';
 
 const title = 'REACT REDDIT';
 const username = 'anonymous';
 
-// Main component of the application
+// Top-level component of the app
 class App extends Component {
     static propTypes = {
-        topics: PropTypes.array.isRequired
+        topics: PropTypes.array.isRequired,
+        api: PropTypes.object.isRequired,
+        displayType: PropTypes.string.isRequired
+    }
+
+    static defaultProps = {
+        displayType: 'Top'
     }
 
     constructor(props) {
         super(props);
         this.state = {
-            username: username,
-            displayType: 'Top',
-            topics: props.topics,
+            username: username
         };
     }
 
-    // Creates new topic
-    handleSubmit = (event, newTopic) => {
-        const { topics, username } = this.state;
-        const newTopics = TopicUtil.createTopic(topics, newTopic, username);
-        this.setState({ topics: newTopics });
-        event.preventDefault();
-    }
-
-    // Upvotes a topic
-    handleUpvote = (topic) => {
-        const { topics, username } = this.state;
-        const newTopics = TopicUtil.upvoteTopic(topics, topic, username);
-        this.setState({ topics: newTopics });
-    }
-
-    // Downvotes a topic
-    handleDownvote = (topicId) => {
-        const { topics, username } = this.state;
-        const newTopics = TopicUtil.downvoteTopic(topics, topicId, username);
-        this.setState({ topics: newTopics });
-    }
-
-    // Changes display
-    handleDisplayTypeChange = (event) => {
-        this.setState({ displayType: event.target.value });
-        event.preventDefault();
-    }
-
     render() {
-        const { username, topics, displayType } = this.state;
-        const sortedTopics = displayType === 'Top' ?
-            TopicUtil.getMostPopularTopics(topics) :
-            TopicUtil.getAllTopicsSortedByVotes(topics);
+        const { username } = this.state;
+        const { topics, displayType, api } = this.props;
 
         return (
             <div className='home'>
@@ -65,15 +38,15 @@ class App extends Component {
                     <UserProfile username={username} />
                 </header>
                 <main>
-                    <SubmitTopicForm handleSubmit={this.handleSubmit} />
+                    <SubmitTopicForm handleSubmit={api.addNewTopic} />
                     Display:
-                    <select value={displayType} onChange={this.handleDisplayTypeChange}>
+                    <select value={displayType} onChange={api.changeDisplay}>
                         <option value="All">All</option>
                         <option value="Top">Top</option>
                     </select>
-                    <TopicList topics={sortedTopics}
-                        handleUpvote={this.handleUpvote}
-                        handleDownvote={this.handleDownvote} />
+                    <TopicList topics={topics}
+                        handleUpvote={api.upvoteTopic}
+                        handleDownvote={api.downvoteTopic} />
                 </main>
             </div>
         );

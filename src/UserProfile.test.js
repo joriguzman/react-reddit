@@ -6,7 +6,7 @@ describe('UserProfile', () => {
     it('renders elements without exploding', () => {
         const userProfile = shallow(<UserProfile username='morty' />);
 
-        expect(userProfile.find('div').length).toBe(1);
+        expect(userProfile.find('span').length).toBe(1);
     });
 
     it('sets username property', () => {

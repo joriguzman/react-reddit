@@ -6,7 +6,7 @@ describe('Title', () => {
     it('renders elements without exploding', () => {
         const title = shallow(<Title text='TITLE' />);
 
-        expect(title.find('h1').length).toBe(1);
+        expect(title.find('span').length).toBe(1);
     });
 
     it('sets text property', () => {

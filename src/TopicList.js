@@ -2,14 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TopicItem from './TopicItem';
 
+// Displays list of topics
 const TopicList = ({ topics, handleUpvote, handleDownvote }) => {
     return (
         <table>
-            <thead>
-                <tr>
-                    <th>Topics</th>
-                </tr>
-            </thead>
             <tbody>
                 {topics.map(topic =>
                     <TopicItem key={topic.topicId}

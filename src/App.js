@@ -32,22 +32,36 @@ class App extends Component {
         const { topics, displayType, api } = this.props;
 
         return (
-            <div className='home'>
-                <header>
-                    <Title text={title} />
-                    <UserProfile username={username} />
-                </header>
-                <main>
-                    <SubmitTopicForm handleSubmit={api.addNewTopic} />
-                    Display:
-                    <select value={displayType} onChange={api.changeDisplay}>
-                        <option value="All">All</option>
-                        <option value="Top">Top</option>
-                    </select>
-                    <TopicList topics={topics}
-                        handleUpvote={api.upvoteTopic}
-                        handleDownvote={api.downvoteTopic} />
-                </main>
+            <div>
+                <table className="main">
+                    <thead>
+                        <tr>
+                            <td>
+                                <Title text={title} />
+                                <UserProfile username={username} />
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <SubmitTopicForm handleSubmit={api.addNewTopic} />
+                                Display:
+                                <select value={displayType} onChange={api.changeDisplay}>
+                                    <option value="All">All</option>
+                                    <option value="Top">Top</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <TopicList topics={topics}
+                                    handleUpvote={api.upvoteTopic}
+                                    handleDownvote={api.downvoteTopic} />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         );
     }

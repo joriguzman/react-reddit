@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Displays title header
 const Title = ({ text }) => (
-    <div>
-        <h1>{text}</h1>
-    </div>
+    <span>
+        <h3>{text}</h3>
+    </span>
 );
 
 Title.propTypes = {

@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import TopicItem from './TopicItem';
 
 const TopicList = ({ topics, handleUpvote, handleDownvote }) => {
-    const topicItems = topics.map(topic =>
-        <TopicItem key={topic.topicId} topic={topic}
-            handleUpvote={handleUpvote} handleDownvote={handleDownvote} />);
-
     return (
         <table>
             <thead>
@@ -15,7 +11,11 @@ const TopicList = ({ topics, handleUpvote, handleDownvote }) => {
                 </tr>
             </thead>
             <tbody>
-                {topicItems}
+                {topics.map(topic =>
+                    <TopicItem key={topic.topicId}
+                        topic={topic}
+                        handleUpvote={handleUpvote}
+                        handleDownvote={handleDownvote} />)}
             </tbody>
         </table>
     );

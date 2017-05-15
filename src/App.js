@@ -6,31 +6,23 @@ import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
 
 const title = 'REACT REDDIT';
-const username = 'anonymous';
 
 // Top-level component of the app
 class App extends Component {
     static propTypes = {
         topics: PropTypes.array.isRequired,
         api: PropTypes.object.isRequired,
-        displayType: PropTypes.string.isRequired
+        displayType: PropTypes.string.isRequired,
+        username: PropTypes.string.isRequired
     }
 
     static defaultProps = {
-        displayType: 'Top'
-    }
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: username
-        };
+        displayType: 'Top',
+        username: 'guest'
     }
 
     render() {
-        const { username } = this.state;
-        const { topics, displayType, api } = this.props;
-
+        const { topics, displayType, api, username } = this.props;
         return (
             <div>
                 <table className="main">

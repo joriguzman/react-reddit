@@ -1,4 +1,4 @@
-const getSortedTopics = comparison => // TODO Put numberOfItemsLast
+const getSortedTopics = comparison =>
     topics => {
         const sortedTopics = [...topics].sort(comparison);
         return sortedTopics;
@@ -9,10 +9,6 @@ const compareTopicVotes = (topicA, topicB) => {
 };
 
 const getTopicsSortedByVotes = getSortedTopics(compareTopicVotes);
-const getTop20TopicsSortedByVotes = (topics) => {
-    const sortedTopics = getTopicsSortedByVotes(topics);
-    return sortedTopics.slice(0, 20);
-};
 
 const getNewTopicId = (topics) => {
     const maxTopicId = topics.map(topic => topic.topicId)
@@ -29,7 +25,8 @@ const replaceTopic = (topics, newTopic) => {
 
 const TopicUtil = {
     getTop20TopicsSortedByVotes(topics) {
-        return getTop20TopicsSortedByVotes(topics);
+        const sortedTopics = getTopicsSortedByVotes(topics);
+        return sortedTopics.slice(0, 20);
     },
 
     getAllTopicsSortedByVotes(topics) {
@@ -49,13 +46,13 @@ const TopicUtil = {
         return newTopics;
     },
 
-    // Create new copy of topics with vote added to topic. Don't mutate existing topics.
+    // Create new copy of topics with vote added to topic. It does not mutate existing topics.
     upvoteTopic(topics, topic, username) {
         const newTopic = { ...topic, upvotes: topic.upvotes.concat([{ username }]) };
         return replaceTopic(topics, newTopic);
     },
 
-    // Create new copy of topics with vote added to topic. Don't mutate existing topics.
+    // Create new copy of topics with vote added to topic. It does not mutate existing topics.
     downvoteTopic(topics, topic, username) {
         const newTopic = { ...topic, downvotes: topic.downvotes.concat([{ username }]) };
         return replaceTopic(topics, newTopic);

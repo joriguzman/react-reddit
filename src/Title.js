@@ -9,10 +9,10 @@ const Title = ({ text }) => (
 
 Title.propTypes = {
     text: PropTypes.string.isRequired
-}
+};
 
 Title.defaultProps = {
     text: 'REACT REDDIT'
-}
+};
 
 export default Title;

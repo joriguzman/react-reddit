@@ -4,24 +4,26 @@ import TopicList from './TopicList';
 import TopicItem from './TopicItem';
 
 describe('TopicList', () => {
-    const topics = [{
-        topicId: 1,
-        username: 'user1',
-        topic: 'Sample topic1',
-        votes: [{
+    const topics = [
+        {
+            topicId: 1,
             username: 'user1',
-            upOrDown: 1
-        }]
-    },
-    {
-        topicId: 2,
-        username: 'user2',
-        topic: 'Sample topic2',
-        votes: [{
+            topic: 'Sample topic1',
+            upvotes: [
+                { username: 'user1' }
+            ],
+            downvotes: []
+        },
+        {
+            topicId: 2,
             username: 'user2',
-            upOrDown: 1
-        }]
-    }];
+            topic: 'Sample topic2',
+            upvotes: [
+                { username: 'user2' }
+            ],
+            downvotes: []
+        }
+    ];
 
     it('renders two TopicItems', () => {
         const topicList = shallow(<TopicList topics={topics} />);

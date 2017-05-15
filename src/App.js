@@ -24,8 +24,8 @@ class App extends Component {
     render() {
         const { topics, displayType, api, username } = this.props;
         return (
-            <div>
-                <table className="main">
+            <div className='AppContainer'>
+                <table>
                     <thead>
                         <tr>
                             <td>
@@ -40,8 +40,8 @@ class App extends Component {
                                 <SubmitTopicForm handleSubmit={api.addNewTopic} />
                                 Display:
                                 <select value={displayType} onChange={api.changeDisplay}>
-                                    <option value="All">All</option>
-                                    <option value="Top">Top</option>
+                                    <option value='All'>All</option>
+                                    <option value='Top'>Top</option>
                                 </select>
                             </td>
                         </tr>

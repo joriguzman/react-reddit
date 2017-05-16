@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Title from './Title';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
-
-const title = 'REACT REDDIT';
 
 // Top-level component of the app
 class App extends Component {
@@ -24,36 +21,25 @@ class App extends Component {
     render() {
         const { topics, displayType, api, username } = this.props;
         return (
-            <div className='AppContainer'>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>
-                                <Title text={title} />
-                                <UserProfile username={username} />
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <SubmitTopicForm handleSubmit={api.addNewTopic} />
-                                Display:
-                                <select value={displayType} onChange={api.changeDisplay}>
-                                    <option value='All'>All</option>
-                                    <option value='Top'>Top</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <TopicList topics={topics}
-                                    handleUpvote={api.upvoteTopic}
-                                    handleDownvote={api.downvoteTopic} />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div className="App__wrap">
+                <div className="App__header">
+                    <span className="App__homelink">REACT REDDIT</span>
+                    <UserProfile username={username} />
+                </div>
+                <div className="App__content">
+                    <SubmitTopicForm handleSubmit={api.addNewTopic} />
+                    Display:
+                       <select value={displayType} onChange={api.changeDisplay}>
+                        <option value='All'>All</option>
+                        <option value='Top'>Top</option>
+                    </select>
+                    <TopicList topics={topics}
+                        handleUpvote={api.upvoteTopic}
+                        handleDownvote={api.downvoteTopic} />
+                </div>
+                <div className="App__footer">
+                    <a href="https://github.com/joriguzman/react-reddit">react-reddit</a>
+                </div>
             </div>
         );
     }

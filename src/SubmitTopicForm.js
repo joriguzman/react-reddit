@@ -27,11 +27,12 @@ class SubmitTopicForm extends Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    Topic: <textarea value={newTopic}
+                <label>Topic:
+                     <input value={newTopic}
                         onChange={this.handleChange}
                         maxLength={maxTopicLength}
-                        placeholder='Put something interesting'></textarea>
+                        placeholder='Put something interesting'>
+                    </input>
                 </label>
                 <button disabled={isTopicEmpty}>Submit!</button>
             </form>

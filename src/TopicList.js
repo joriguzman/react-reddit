@@ -5,15 +5,15 @@ import TopicItem from './TopicItem';
 // Displays list of topics
 const TopicList = ({ topics, handleUpvote, handleDownvote }) => {
     return (
-        <table>
-            <tbody>
+        <div>
+            <ol className='Items__list'>
                 {topics.map(topic =>
                     <TopicItem key={topic.topicId}
                         topic={topic}
                         handleUpvote={handleUpvote}
                         handleDownvote={handleDownvote} />)}
-            </tbody>
-        </table>
+            </ol>
+        </div>
     );
 };
 

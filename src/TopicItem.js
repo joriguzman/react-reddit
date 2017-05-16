@@ -21,17 +21,15 @@ class TopicItem extends Component {
         const sumOfVotes = topic.upvotes.length - topic.downvotes.length;
 
         return (
-            <tr>
-                <td>
-                    <span className='upvote' onClick={this.handleUpvote}>Upvote</span>
-                    <span className='votes'> ({sumOfVotes}) </span>
-                    <span className='downvote' onClick={this.handleDownvote}>Downvote</span>
-                </td>
-                <td>
-                    <p className='topic'>{topic.topic}</p>
-                    <p className='author'>Posted by {topic.username} on {topic.creationDate}</p>
-                </td>
-            </tr>
+            <li className='ListItem'>
+                <div>{topic.topic}</div>
+                <div className='Item__meta'>
+                    <span className='upvote' onClick={this.handleUpvote}>Upvote</span>{' '}
+                    <span className="Item__score">{sumOfVotes}</span>{' '}
+                    <span className='downvote' onClick={this.handleDownvote}>Downvote</span>{'| '}
+                    <span className="Item__by">By {topic.username} on {topic.creationDate}</span>
+                </div>
+            </li>
         );
     }
 }

@@ -153,6 +153,10 @@ span.control:hover {
   min-height: 34px;
 }
 
+.SubmitForm input {
+  width: 500px;
+}
+
 .Updates--loading {
   padding: 1em 1.25em 0 1.25em;
   margin-bottom: 1em;
@@ -183,7 +187,6 @@ span.control:hover {
   margin-bottom: 1em;
 }
 .Item__title {
-  color: #666;
   font-size:18px;
 }
 .Item__title a {

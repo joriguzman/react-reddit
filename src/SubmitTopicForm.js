@@ -26,8 +26,8 @@ class SubmitTopicForm extends Component {
         const isTopicEmpty = newTopic.length <= 0;
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Topic:
+            <form className='SubmitForm' onSubmit={this.handleSubmit}>
+                <label>{'Topic: '}
                      <input value={newTopic}
                         onChange={this.handleChange}
                         maxLength={maxTopicLength}

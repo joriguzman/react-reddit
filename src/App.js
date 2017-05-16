@@ -21,12 +21,12 @@ class App extends Component {
     render() {
         const { topics, displayType, api, username } = this.props;
         return (
-            <div className="App__wrap">
-                <div className="App__header">
-                    <span className="App__homelink">REACT REDDIT</span>
+            <div className='App__wrap'>
+                <div className='App__header'>
+                    <span className='App__homelink'>REACT REDDIT</span>
                     <UserProfile username={username} />
                 </div>
-                <div className="App__content">
+                <div className='App__content'>
                     <SubmitTopicForm handleSubmit={api.addNewTopic} />
                     Display:
                        <select value={displayType} onChange={api.changeDisplay}>
@@ -37,8 +37,8 @@ class App extends Component {
                         handleUpvote={api.upvoteTopic}
                         handleDownvote={api.downvoteTopic} />
                 </div>
-                <div className="App__footer">
-                    <a href="https://github.com/joriguzman/react-reddit">react-reddit</a>
+                <div className='App__footer'>
+                    <a href='https://github.com/joriguzman/react-reddit'>react-reddit</a>
                 </div>
             </div>
         );

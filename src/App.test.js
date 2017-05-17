@@ -5,6 +5,7 @@ import App from './App';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
+import DisplayType from './DisplayType';
 
 describe('App', () => {
     const topics = [
@@ -69,5 +70,16 @@ describe('App', () => {
         const app = shallow(<App topics={topics} api={api} />);
 
         expect(app.find(TopicList).length).toBe(1);
+    });
+
+    it('renders DisplayType component', () => {
+        const api = {
+            changeDisplay() {
+                return jest.mock();
+            }
+        };
+        const app = shallow(<App topics={topics} api={api} />);
+
+        expect(app.find(DisplayType).length).toBe(1);
     });
 });

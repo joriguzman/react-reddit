@@ -3,16 +3,12 @@ import { shallow } from 'enzyme';
 import TopicItem from './TopicItem';
 
 describe('TopicItem', () => {
+    const username = 'mrmeeseeks';
     const topic = {
         topicId: 1,
-        username: 'mrmeeseeks',
+        username,
         topic: 'Sample topic',
-        creationDate: '2016-10-25T11:08:25Z',
-        totalVotes: 1,
-        upvotes: [{
-            'username': 'gskellorne0',
-            'upOrDown': 1
-        }],
+        upvotes: [{ username }],
         downvotes: []
     };
 

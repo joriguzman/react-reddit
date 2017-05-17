@@ -24,9 +24,9 @@ class TopicItem extends Component {
             <li className='ListItem'>
                 <div className='Item__title'>{topic.topic}</div>
                 <div className='Item__meta'>
-                    <span>{points} points</span>{'| '}
                     <span className='upvote' onClick={this.handleUpvote}>Upvote</span>{' '}
-                    <span className='downvote' onClick={this.handleDownvote}>Downvote</span>{'| '}
+                    <span>{points} points</span>{' '}
+                    <span className='downvote' onClick={this.handleDownvote}>Downvote</span>{' | '}
                     <span className="Item__by">By {topic.username} on {topic.creationDate}</span>
                 </div>
             </li>

@@ -1,15 +1,24 @@
+/*
+ * Utility functions for displaying and manipulating topics.
+ */
+
+// Curried function that returns a function to sort topics.
 const getSortedTopics = comparison =>
     topics => {
         const sortedTopics = [...topics].sort(comparison);
         return sortedTopics;
     };
 
+// Comparison method that compares two topics based on upvotes and downvotes.
 const compareTopicVotes = (topicA, topicB) => {
-    return (topicB.upvotes.length - topicB.downvotes.length) - (topicA.upvotes.length - topicA.downvotes.length);
+    return (topicB.upvotes.length - topicB.downvotes.length) -
+        (topicA.upvotes.length - topicA.downvotes.length);
 };
 
+// Partially apply getSortedTopics to return a function that returns the sorted topics.
 const getTopicsSortedByVotes = getSortedTopics(compareTopicVotes);
 
+// Returns max topic ID incremented by 1
 const getNewTopicId = (topics) => {
     const maxTopicId = topics.map(topic => topic.topicId)
         .reduce((max, current) => Math.max(max, current));
@@ -17,9 +26,20 @@ const getNewTopicId = (topics) => {
     return newTopicId;
 };
 
-const replaceTopic = (topics, newTopic) => {
-    const currentTopicIndex = topics.findIndex(currTopic => currTopic.topicId === newTopic.topicId);
-    const newTopics = [...topics.slice(0, currentTopicIndex), newTopic, ...topics.slice(currentTopicIndex + 1)];
+const getTopicById = (topics, topicId) => {
+    return topics.find(currTopic => currTopic.topicId === topicId);
+};
+
+// Returns a new topic with added upvote/downvote.
+const addVoteToTopic = (topic, username, voteType) => {
+    const votes = topic[voteType];
+    return { ...topic, [voteType]: votes.concat([{ username }]) };
+};
+
+// Replaces the topic in list based on index and returns a new list.
+const replaceTopic = (topics, topic) => {
+    const topicIndex = topics.findIndex(currTopic => currTopic.topicId === topic.topicId);
+    const newTopics = [...topics.slice(0, topicIndex), topic, ...topics.slice(topicIndex + 1)];
     return newTopics;
 };
 
@@ -42,20 +62,26 @@ const TopicUtil = {
             upvotes: [{ username }],
             downvotes: []
         };
-        const newTopics = topics.concat([newTopic]);
-        return newTopics;
+        return newTopic;
     },
 
-    // Create new copy of topics with vote added to topic. It does not mutate existing topics.
-    upvoteTopic(topics, topic, username) {
-        const newTopic = { ...topic, upvotes: topic.upvotes.concat([{ username }]) };
-        return replaceTopic(topics, newTopic);
+    // Adds topic to the list. A new list is returned. Original list is kept intact.
+    addTopic(topics, topic) {
+        return topics.concat([topic]);
     },
 
-    // Create new copy of topics with vote added to topic. It does not mutate existing topics.
-    downvoteTopic(topics, topic, username) {
-        const newTopic = { ...topic, downvotes: topic.downvotes.concat([{ username }]) };
-        return replaceTopic(topics, newTopic);
+    // Creates new copy of topics with upvote added to topic. It does not mutate existing topics.
+    upvoteTopic(topics, topicId, username) {
+        const topic = getTopicById(topics, topicId);
+        const updatedTopic = addVoteToTopic(topic, username, 'upvotes');
+        return replaceTopic(topics, updatedTopic);
+    },
+
+    // Creates new copy of topics with downvote added to topic. It does not mutate existing topics.
+    downvoteTopic(topics, topicId, username) {
+        const topic = getTopicById(topics, topicId);
+        const updatedTopic = addVoteToTopic(topic, username, 'downvotes');
+        return replaceTopic(topics, updatedTopic);
     }
 };
 

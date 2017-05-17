@@ -9,11 +9,11 @@ class TopicItem extends Component {
     }
 
     handleUpvote = () => {
-        this.props.handleUpvote(this.props.topic);
+        this.props.handleUpvote(this.props.topic.topicId);
     }
 
     handleDownvote = () => {
-        this.props.handleDownvote(this.props.topic);
+        this.props.handleDownvote(this.props.topic.topicId);
     }
 
     render() {

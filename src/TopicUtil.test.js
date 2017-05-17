@@ -19,33 +19,26 @@ it('returns top 20 topics sorted by votes', () => {
     expect(sortedTopics[0].topicId).toBe(3);
 });
 
-it('creates a new topic', () => {
+it('returns new topic ID', () => {
     const topics = loadInitialTopics();
-    const username = 'guest';
-    const topic = {
-        username,
-        topic: 'Sample topic',
-        upvotes: [{ username }],
-        downvotes: []
-    };
 
-    const newTopic = TopicUtil.createTopic(topics, topic, username);
+    const newTopicId = TopicUtil.getNewTopicId(topics);
 
-    expect(newTopic.topicId).toBe(31);
+    expect(newTopicId).toBe(31);
 });
 
 it('adds new topic', () => {
     const topics = loadInitialTopics();
     const username = 'guest';
     const topic = {
-        username,
+        topicId: 31,
         topic: 'Sample topic',
+        username,
         upvotes: [{ username }],
         downvotes: []
     };
 
-    const newTopic = TopicUtil.createTopic(topics, topic, username);
-    const updatedTopics = TopicUtil.addTopic(topics, newTopic);
+    const updatedTopics = TopicUtil.addTopic(topics, topic);
 
     expect(updatedTopics.length).toBe(31);
     // Ensure that original topic list was not modified.

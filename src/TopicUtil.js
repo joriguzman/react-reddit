@@ -18,22 +18,15 @@ const compareTopicVotes = (topicA, topicB) => {
 // Partially apply getSortedTopics to return a function that returns the sorted topics.
 const getTopicsSortedByVotes = getSortedTopics(compareTopicVotes);
 
-// Returns max topic ID incremented by 1
-const getNewTopicId = (topics) => {
-    const maxTopicId = topics.map(topic => topic.topicId)
-        .reduce((max, current) => Math.max(max, current));
-    const newTopicId = maxTopicId + 1;
-    return newTopicId;
-};
-
 const getTopicById = (topics, topicId) => {
     return topics.find(currTopic => currTopic.topicId === topicId);
 };
 
 // Returns a new topic with added upvote/downvote.
 const addVoteToTopic = (topic, username, voteType) => {
-    const votes = topic[voteType];
-    return { ...topic, [voteType]: votes.concat([{ username }]) };
+    return (voteType === 'up') ?
+        { ...topic, upvotes: topic.upvotes.concat([{ username }]) } :
+        { ...topic, downvotes: topic.downvotes.concat([{ username }]) };
 };
 
 // Replaces the topic in list based on index and returns a new list.
@@ -53,16 +46,12 @@ const TopicUtil = {
         return getTopicsSortedByVotes(topics);
     },
 
-    createTopic(topics, topic, username) {
-        const newTopic = {
-            topicId: getNewTopicId(topics),
-            topic,
-            username,
-            creationDate: new Date().toLocaleString(),
-            upvotes: [{ username }],
-            downvotes: []
-        };
-        return newTopic;
+    // Returns max topic ID incremented by 1
+    getNewTopicId(topics) {
+        const maxTopicId = topics.map(topic => topic.topicId)
+            .reduce((max, current) => Math.max(max, current));
+        const newTopicId = maxTopicId + 1;
+        return newTopicId;
     },
 
     // Adds topic to the list. A new list is returned. Original list is kept intact.
@@ -73,14 +62,14 @@ const TopicUtil = {
     // Creates new copy of topics with upvote added to topic. It does not mutate existing topics.
     upvoteTopic(topics, topicId, username) {
         const topic = getTopicById(topics, topicId);
-        const updatedTopic = addVoteToTopic(topic, username, 'upvotes');
+        const updatedTopic = addVoteToTopic(topic, username, 'up');
         return replaceTopic(topics, updatedTopic);
     },
 
     // Creates new copy of topics with downvote added to topic. It does not mutate existing topics.
     downvoteTopic(topics, topicId, username) {
         const topic = getTopicById(topics, topicId);
-        const updatedTopic = addVoteToTopic(topic, username, 'downvotes');
+        const updatedTopic = addVoteToTopic(topic, username, 'down');
         return replaceTopic(topics, updatedTopic);
     }
 };

@@ -20,10 +20,17 @@ const withDataStore = (WrappedComponent) => {
         }
 
         // Creates new topic
-        addNewTopic = (event, newTopic) => {
+        addNewTopic = (event, topic) => {
             const { topics, username } = this.state;
-            const newTopicObject = TopicUtil.createTopic(topics, newTopic, username);
-            const newTopics = TopicUtil.addTopic(topics, newTopicObject);
+            const newTopic = {
+                topicId: TopicUtil.getNewTopicId(topics),
+                topic,
+                username,
+                creationDate: new Date().toLocaleString(),
+                upvotes: [{ username }],
+                downvotes: []
+            };
+            const newTopics = TopicUtil.addTopic(topics, newTopic);
             this.setState({ topics: newTopics });
             event.preventDefault();
         }

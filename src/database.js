@@ -35,7 +35,7 @@ const loadInitialTopics = () => {
             'creationDate': '01/05/2017, 12:43:46 AM',
             'upvotes': [
                 {
-                    'username': 'lwinchcum6'
+                    'username': 'qtingcomb1'
                 },
                 {
                     'username': 'mlagadu7'
@@ -63,7 +63,7 @@ const loadInitialTopics = () => {
             'creationDate': '01/05/2017, 12:43:46 AM',
             'upvotes': [
                 {
-                    'username': 'jdraperh',
+                    'username': 'goverland2',
                 },
                 {
                     'username': 'awiszniewskii'
@@ -95,7 +95,11 @@ const loadInitialTopics = () => {
             'username': 'rhenrionot3',
             'topic': 'Global WhatsApp Outage',
             'creationDate': '01/05/2017, 1:43:46 AM',
-            'upvotes': [],
+            'upvotes': [
+                {
+                    'username': 'rhenrionot3'
+                }
+            ],
             'downvotes': []
         },
         {
@@ -173,7 +177,7 @@ const loadInitialTopics = () => {
         {
             'topicId': 14,
             'username': 'tkempstond',
-            'topic': 'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus.',
+            'topic': 'Take That, Intel: AMD Unveils 16-core Ryzen \'Threadripper\' Enthusiast CPU',
             'creationDate': '01/05/2017, 12:43:46 AM',
             'upvotes': [],
             'downvotes': []

@@ -6,8 +6,8 @@ describe('SubmitTopicForm', () => {
     it('renders elements without exploding', () => {
         const submitForm = shallow(<SubmitTopicForm />);
 
-        expect(submitForm.find('textarea').length).toBe(1);
-        expect(submitForm.find('textarea').prop('maxLength')).toBe(255);
+        expect(submitForm.find('input').length).toBe(1);
+        expect(submitForm.find('input').prop('maxLength')).toBe(255);
         expect(submitForm.find('button').length).toBe(1);
     });
 
@@ -19,18 +19,18 @@ describe('SubmitTopicForm', () => {
 
     it('enables submit button if there is a topic', () => {
         const submitForm = shallow(<SubmitTopicForm />);
-        const textarea = submitForm.find('textarea');
+        const input = submitForm.find('input');
 
-        textarea.simulate('change', { target: { value: 'Changed' } });
+        input.simulate('change', { target: { value: 'Changed' } });
 
         expect(submitForm.find('button').prop('disabled')).toBe(false);
     });
 
     it('sets state when input is changed', () => {
         const submitForm = shallow(<SubmitTopicForm />);
-        const textarea = submitForm.find('textarea');
+        const input = submitForm.find('input');
 
-        textarea.simulate('change', { target: { value: 'Changed' } });
+        input.simulate('change', { target: { value: 'Changed' } });
 
         expect(submitForm.state().newTopic).toBe('Changed');
     });

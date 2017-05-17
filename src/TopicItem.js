@@ -18,13 +18,13 @@ class TopicItem extends Component {
 
     render() {
         const { topic } = this.props;
-        const sumOfVotes = topic.upvotes.length - topic.downvotes.length;
+        const points = topic.upvotes.length - topic.downvotes.length;
 
         return (
             <li className='ListItem'>
                 <div className='Item__title'>{topic.topic}</div>
                 <div className='Item__meta'>
-                    <span className="Item__score">{sumOfVotes} points</span>{'| '}
+                    <span>{points} points</span>{'| '}
                     <span className='upvote' onClick={this.handleUpvote}>Upvote</span>{' '}
                     <span className='downvote' onClick={this.handleDownvote}>Downvote</span>{'| '}
                     <span className="Item__by">By {topic.username} on {topic.creationDate}</span>

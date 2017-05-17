@@ -31,9 +31,9 @@ describe('TopicList', () => {
         expect(topicList.find(TopicItem).length).toBe(2);
     });
 
-    it('renders a table of topics', () => {
+    it('renders a list of topics', () => {
         const topicList = shallow(<TopicList topics={topics} />);
 
-        expect(topicList.find('table').length).toBe(1);
+        expect(topicList.find('ol').length).toBe(1);
     });
 });

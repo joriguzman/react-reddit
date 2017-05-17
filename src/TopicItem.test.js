@@ -19,17 +19,13 @@ describe('TopicItem', () => {
     it('renders elements without exploding', () => {
         const topicItem = shallow(<TopicItem topic={topic} />);
 
-        expect(topicItem.find('.upvote')).toHaveLength(1);
-        expect(topicItem.find('.votes')).toHaveLength(1);
-        expect(topicItem.find('.downvote')).toHaveLength(1);
-        expect(topicItem.find('.topic')).toHaveLength(1);
+        expect(topicItem.find('li')).toHaveLength(1);
     });
 
     it('renders text elements', () => {
         const topicItem = shallow(<TopicItem topic={topic} />);
 
-        expect(topicItem.find('.votes').text()).toContain('(1)');
-        expect(topicItem.find('.topic').text()).toContain('Sample topic');
+        expect(topicItem.find('.Item__title').text()).toContain('Sample topic');
     });
 
     it('calls handleUpvote when upvote is clicked', () => {

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import App from './App';
-import Title from './Title';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
@@ -37,17 +36,6 @@ describe('App', () => {
         };
         const div = document.createElement('div');
         ReactDOM.render(<App topics={topics} api={api} />, div);
-    });
-
-    it('renders Title component', () => {
-        const api = {
-            changeDisplay() {
-                return jest.mock();
-            }
-        };
-        const app = shallow(<App topics={topics} api={api} />);
-
-        expect(app.find(Title).length).toBe(1);
     });
 
     it('renders UserProfile component', () => {

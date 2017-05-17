@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import UserProfile from './UserProfile';
 import SubmitTopicForm from './SubmitTopicForm';
 import TopicList from './TopicList';
+import DisplayType from './DisplayType';
 
 // Top-level component of the app
 class App extends Component {
     static propTypes = {
         topics: PropTypes.array.isRequired,
-        api: PropTypes.object.isRequired,
         displayType: PropTypes.string.isRequired,
-        username: PropTypes.string.isRequired
+        username: PropTypes.string.isRequired,
+        api: PropTypes.object.isRequired
     }
 
     static defaultProps = {
@@ -28,11 +29,8 @@ class App extends Component {
                 </div>
                 <div className='App__content'>
                     <SubmitTopicForm handleSubmit={api.addNewTopic} />
-                    Display:
-                       <select value={displayType} onChange={api.changeDisplay}>
-                        <option value='All'>All</option>
-                        <option value='Top'>Top</option>
-                    </select>
+                    <DisplayType displayType={displayType}
+                        handleChange={api.changeDisplay} />
                     <TopicList topics={topics}
                         handleUpvote={api.upvoteTopic}
                         handleDownvote={api.downvoteTopic} />

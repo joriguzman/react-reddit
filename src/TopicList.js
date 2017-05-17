@@ -6,7 +6,7 @@ import TopicItem from './TopicItem';
 const TopicList = ({ topics, handleUpvote, handleDownvote }) => {
     return (
         <div>
-            <ol className='Items__list'>
+            <ol className='TopicList'>
                 {topics.map(topic =>
                     <TopicItem key={topic.topicId}
                         topic={topic}

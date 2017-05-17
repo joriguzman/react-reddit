@@ -21,13 +21,13 @@ class TopicItem extends Component {
         const points = topic.upvotes.length - topic.downvotes.length;
 
         return (
-            <li className='ListItem'>
-                <div className='Item__title'>{topic.topic}</div>
-                <div className='Item__meta'>
-                    <span className='upvote' onClick={this.handleUpvote}>Upvote</span>{' '}
-                    <span>{points} points</span>{' '}
-                    <span className='downvote' onClick={this.handleDownvote}>Downvote</span>{' | '}
-                    <span className="Item__by">By {topic.username} on {topic.creationDate}</span>
+            <li className='Topic'>
+                <div className='Topic__title'>{topic.topic}</div>
+                <div className='Topic__meta'>
+                    <div className='Topic__upvote' onClick={this.handleUpvote}></div>{' '}
+                    <span className='Topic__points'>{points} points</span>{' '}
+                    <div className='Topic__downvote' onClick={this.handleDownvote}></div>{' | '}
+                    <span>By {topic.username} on {topic.creationDate}</span>
                 </div>
             </li>
         );

@@ -22,9 +22,9 @@ class App extends Component {
     render() {
         const { topics, displayType, api, username } = this.props;
         return (
-            <div className='App__wrap'>
+            <div className='App'>
                 <div className='App__header'>
-                    <span className='App__homelink'>REACT REDDIT</span>
+                    <span className='App__title'>REACT REDDIT</span>
                     <UserProfile username={username} />
                 </div>
                 <div className='App__content'>

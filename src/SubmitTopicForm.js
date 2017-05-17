@@ -27,7 +27,7 @@ class SubmitTopicForm extends Component {
 
         return (
             <form className='SubmitForm' onSubmit={this.handleSubmit}>
-                <label>{'Topic: '}
+                <label>Topic:
                      <input value={newTopic}
                         onChange={this.handleChange}
                         maxLength={maxTopicLength}

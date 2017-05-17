@@ -153,6 +153,11 @@ span.control:hover {
   min-height: 34px;
 }
 
+.SubmitForm {
+  border-bottom: 1px solid #e7e7e7;
+  padding: 5px;
+}
+
 .SubmitForm input {
   width: 500px;
 }

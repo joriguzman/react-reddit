@@ -63,6 +63,8 @@ Apart from the libraries included in Create-react-app, I eschewed other librarie
 
 [database.js](src/database.js) contains list of initial topics to display. Everytime `loadInitialTopics()` is called, a new copy of the topic list is created.
 
+[.eslintrc](.eslintrc) is for code linting in the text editor.
+
 Since there are a few styles, all of them are in [index.css](src/index.css), for simplicity.
 
 ### Tests

@@ -49,7 +49,13 @@ const getTopicsSortedByVotes = getSortedTopics(compareTopicVotes);
 Apart from the libraries included in Create-react-app, I eschewed other libraries (such as Redux for state management and ImmutableJS for immutable data structures) to demonstrate that good coding practices can be done without them for this exercise.
 
 ## Files
-[App.js](src/App.js) is the parent component. It is only used as the container for the child components, and does not have any application logic.
+### Components
+- [App](src/App.js): the parent component. It is only used as the container for the child components, and does not have any application logic.
+- [UserProfile](src/UserProfile.js): displays username
+- [SubmitTopicForm](src/SubmitTopicForm.js): for submitting new topic
+- [TopicList](src/TopicList.js): displays list of topics
+- [TopicItem](src/TopicItem.js): displays individual item
+- [DisplayType](src/DisplayType.js): controls whether to display top or all topics
 
 [withDataStore.js](src/withDataStore.js) contains the app logic. It wraps the App component in a higher-order component that has the API to the data store.
 
@@ -89,7 +95,7 @@ npm test
 
 ## Deployment
 This app is deployed to Heroku.<br>
-`git push heroku master`
+To push to Heroku: `git push heroku master`
 
 ## Sending Feedback
 Please send [your feedback](https://github.com/joriguzman/react-reddit/issues).
